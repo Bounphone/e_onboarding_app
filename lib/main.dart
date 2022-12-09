@@ -1,4 +1,6 @@
 import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
+import 'package:e_onboarding_app/features/auth/screen/org_screen.dart';
+import 'package:e_onboarding_app/features/auth/screen/req_join_org_screen.dart';
 import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: const OrgScreen(),
     );
   }
 }

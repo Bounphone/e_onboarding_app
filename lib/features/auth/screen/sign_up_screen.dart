@@ -1,4 +1,6 @@
+import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/features/auth/data/sign_up_data.dart';
+import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:e_onboarding_app/widgets/text_field/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +17,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -24,7 +26,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Sign up'),
+                    const Text('Sign up', style: TextStyle(fontSize: 20, color: AppColor.primaryColor, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 20),
                     const Text('First Name'),
                     const SizedBox(height: 5),
@@ -46,20 +48,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(height: 5),
                     TextFieldWidget(controller: password),
                     const SizedBox(height: 10),
-                    const Text('Your buddy invitation code'),
-                    const SizedBox(height: 5),
-                    TextFieldWidget(controller: buddyInv),
                   ],
                 ),
               )),
-              SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      onPressed: (){}, child: Text("Next"))),
+              ButtonWidgets(title: 'Next', onPress: (){}),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Have an account already?'),
-                  TextButton(onPressed: (){}, child: Text('Login'))
+                  TextButton(onPressed: (){}, child: Text('Login', style: TextStyle(color: AppColor.primaryColor)))
                 ],
               )
             ],
