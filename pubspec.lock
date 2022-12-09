@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  dots_indicator:
+    dependency: transitive
+    description:
+      name: dots_indicator
+      sha256: e59dfc90030ee5a4fd4c53144a8ce97cc7a823c2067b8fb9814960cd1ae63f89
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -62,6 +70,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_dotenv:
+    dependency: "direct main"
+    description:
+      name: flutter_dotenv
+      sha256: d9283d92059a22e9834bc0a31336658ffba77089fb6f3cc36751f1fc7c6661a3
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.2"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -75,6 +91,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  introduction_screen:
+    dependency: "direct main"
+    description:
+      name: introduction_screen
+      sha256: "307869da307a6ba291008f8d06030816e94fe0759f6e34d671f9c39c4d512937"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.1"
   js:
     dependency: transitive
     description:
@@ -115,6 +139,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.0"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      sha256: "03bac4c528c64c95c722ec99280375a6f2fc708eec17c7b3f07253b626cd2a20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -123,6 +155,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.2"
+  provider:
+    dependency: "direct main"
+    description:
+      name: provider
+      sha256: e1e7413d70444ea3096815a60fe5da1b11bda8a9dc4769252cc82c53536f8bcc
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.4"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -186,3 +226,4 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=2.19.0-444.1.beta <4.0.0"
+  flutter: ">=1.16.0"
