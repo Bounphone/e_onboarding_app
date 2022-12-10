@@ -13,9 +13,7 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
   bool isSwitch = false;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: Column(
@@ -75,8 +73,6 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
               ],
             ),
           ),
-        ),
-      ),
     );
   }
 }

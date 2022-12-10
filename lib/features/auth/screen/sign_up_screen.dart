@@ -25,6 +25,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final email = TextEditingController();
   final password = TextEditingController();
   final buddyInv = TextEditingController();
+  final confirmPw = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -61,26 +63,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           SizedBox(height: 20.h),
                           Text('First Name', style: TextStyle(fontSize: 12.sp)),
                           SizedBox(height: 5.h),
-                          TextFieldWidget(controller: firstname),
+                          TextFieldWidget(controller: firstname, hide: false),
                           SizedBox(height: 10.h),
                           Text('Last Name'),
                           SizedBox(height: 5.h),
-                          TextFieldWidget(controller: lastname),
+                          TextFieldWidget(controller: lastname, hide: false),
                           SizedBox(height: 10.h),
                           Text('Birthdate', style: TextStyle(fontSize: 12.sp)),
                           SizedBox(height: 5.h),
-                          TextFieldWidget(controller: birthdate),
+                          TextFieldWidget(controller: birthdate, hide: false),
                           SizedBox(height: 10.h),
                           Text('Email', style: TextStyle(fontSize: 12.sp)),
                           SizedBox(height: 5.h),
-                          TextFieldWidget(controller: email),
+                          TextFieldWidget(controller: email, hide: false),
                           SizedBox(height: 10.h),
                           Text(
                             'Password',
                             style: TextStyle(fontSize: 12.sp),
                           ),
                           SizedBox(height: 5.h),
-                          TextFieldWidget(controller: password),
+                          TextFieldWidget(controller: password, hide: true),
+                          SizedBox(height: 10.sp),
+                          Text(
+                            'Confirm password',
+                            style: TextStyle(fontSize: 12.sp),
+                          ),
+                          SizedBox(height: 5.h),
+                          TextFieldWidget(controller: confirmPw, hide: true),
                           SizedBox(height: 10.sp),
                         ],
                       ),

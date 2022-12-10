@@ -39,7 +39,8 @@ class AuthVM extends ChangeNotifier {
         'firstName': firstName,
         'lastName': lastName,
         'birthDay': birthDay,
-        'email': email
+        'email': email,
+        'orgs' : []
       });
     } catch (e) {
       rethrow;
