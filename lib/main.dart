@@ -1,6 +1,9 @@
 import 'dart:io';
+import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
 import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
 import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
+import 'package:e_onboarding_app/features/home/feedback/feedback_screen.dart';
+import 'package:e_onboarding_app/features/home/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,9 +32,12 @@ class MyApp extends StatelessWidget {
             ChangeNotifierProvider<AuthVM>(create: (_) => AuthVM())
           ],
           child: MaterialApp(
+            theme: ThemeData(
+              fontFamily: 'Montserrat'
+            ),
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
-            home: const SignUpScreen(),
+            home:  const FeedBackScreen(),
           ),
         );
       },

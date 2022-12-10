@@ -1,4 +1,5 @@
 import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
+import 'package:e_onboarding_app/widgets/dialog/dialog_loading.dart';
 import 'package:provider/provider.dart';
 
 import '../auth.dart';
@@ -63,7 +64,10 @@ class LoginScreen extends StatelessWidget {
                     return ButtonWidgets(
                         title: 'Login',
                         onPress: () {
-                          model.signIn(email.text, password.text, context);
+                          showDialog(context: context, builder: (_){
+                            return const DialogLoading();
+                          });
+                          // model.signIn(email.text, password.text, context);
                         });
                   }),
                   Row(
