@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-// text edit controller for sign up
+/// text edit controller for sign up
 final firstname = TextEditingController();
 final lastname = TextEditingController();
 final birthdate = TextEditingController();

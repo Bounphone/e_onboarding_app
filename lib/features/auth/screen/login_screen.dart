@@ -1,4 +1,4 @@
-import 'package:e_onboarding_app/config/app_image.dart';
+import '../auth.dart';
 import 'package:e_onboarding_app/features/auth/data/login_data.dart';
 import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';

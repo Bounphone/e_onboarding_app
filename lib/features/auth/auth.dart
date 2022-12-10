@@ -1,0 +1,1 @@
+export '../../config/app_image.dart';
