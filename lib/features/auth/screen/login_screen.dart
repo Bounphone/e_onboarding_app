@@ -65,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                         title: 'Login',
                         onPress: () {
                           showDialog(context: context, builder: (_){
-                            return DialogLoading();
+                            return const DialogLoading();
                           });
                           // model.signIn(email.text, password.text, context);
                         });
