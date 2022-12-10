@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/home/buddy/screen/buddy_screen.dart';
 import 'package:e_onboarding_app/features/home/screens/home_screen.dart';
-import 'package:e_onboarding_app/utils/auth_pref.dart';
+import 'package:e_onboarding_app/utils/shared_pref/auth_pref.dart';
 import 'package:e_onboarding_app/widgets/dialog/dialog_error.dart';
 import 'package:e_onboarding_app/widgets/dialog/dialog_loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';

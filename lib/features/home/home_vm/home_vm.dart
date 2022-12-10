@@ -1,4 +1,4 @@
-import 'package:e_onboarding_app/utils/auth_pref.dart';
+import 'package:e_onboarding_app/utils/shared_pref/auth_pref.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomeVM extends ChangeNotifier {

@@ -45,12 +45,18 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(
+                      height: 30.h,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'My Goals',
-                          style: TextStyle(fontSize: 14.sp),
+                          style: TextStyle(
+                              fontSize: 24.sp,
+                              color: AppColor.primaryColor,
+                              fontWeight: FontWeight.w700),
                         ),
                         Switch(
                           value: isSwitch,
@@ -63,28 +69,30 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                         )
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Task progress',
-                            style: TextStyle(fontSize: 14.sp)),
-                        Text(
-                          '10%',
-                          style: TextStyle(fontSize: 14.sp),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 5.h),
-                    ButtonWidgets(
-                        title: 'Add new task',
-                        onPress: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) {
-                            return AddTaskScreen();
-                          }));
-                        }),
-                    isSwitch
-                        ? ListView(
+                    if (isSwitch)
+                      Column(
+                        children: [
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //   children: [
+                          //     Text('Task progress',
+                          //         style: TextStyle(fontSize: 14.sp)),
+                          //     Text(
+                          //       '10%',
+                          //       style: TextStyle(fontSize: 14.sp),
+                          //     ),
+                          //   ],
+                          // ),
+                          SizedBox(height: 5.h),
+                          ButtonWidgets(
+                              title: 'Add new task',
+                              onPress: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (_) {
+                                  return AddTaskScreen();
+                                }));
+                              }),
+                          ListView(
                             physics: NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             children: snapshot.data!.docs
@@ -140,7 +148,8 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                               return Container();
                             }).toList(),
                           )
-                        : Container(),
+                        ],
+                      ),
                   ],
                 ),
               ),

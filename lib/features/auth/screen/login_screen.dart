@@ -1,7 +1,6 @@
 import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
-import 'package:e_onboarding_app/widgets/dialog/dialog_loading.dart';
+import 'package:e_onboarding_app/utils/validator/check_login.dart';
 import 'package:provider/provider.dart';
-
 import '../auth.dart';
 import 'package:e_onboarding_app/features/auth/data/login_data.dart';
 import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
@@ -13,6 +12,7 @@ import '../../../config/app_colors.dart';
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    checkLogin(context);
     return SafeArea(
       child: Container(
         decoration: BoxDecoration(
@@ -64,7 +64,6 @@ class LoginScreen extends StatelessWidget {
                     return ButtonWidgets(
                         title: 'Login',
                         onPress: () {
-
                           model.signIn(email.text, password.text, context);
                         });
                   }),
