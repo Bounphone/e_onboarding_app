@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/home/buddy/screen/buddy_screen.dart';
 import 'package:e_onboarding_app/features/home/screens/home_screen.dart';
+import 'package:e_onboarding_app/widgets/dialog/dialog_error.dart';
+import 'package:e_onboarding_app/widgets/dialog/dialog_loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -11,13 +13,23 @@ class AuthVM extends ChangeNotifier {
 
   /// On sign up
   Future<void> onSignUp(String email, String password, String firstName,
-      String lastName, String birthDay) async {
+      String lastName, String birthDay, BuildContext context) async {
     try {
-      await Future.wait([
-        signUp(email, password),
-        addUser(firstName, lastName, birthDay, email)
-      ]);
-    } catch (e) {
+      await signUp(email, password);
+      await addUser(firstName, lastName, birthDay, email);
+    } on FirebaseAuthException catch (e) {
+      /// if cannot upload data
+      String message = '';
+      if (e.code == 'email-already-in-use') {
+        message = "You're email has registered.\nPlease enter another email";
+      } else {
+        message = e.message!;
+      }
+      showDialog(
+          context: context,
+          builder: (_) {
+            return DialogError(message: message);
+          });
       rethrow;
     }
   }
@@ -40,7 +52,7 @@ class AuthVM extends ChangeNotifier {
         'lastName': lastName,
         'birthDay': birthDay,
         'email': email,
-        'orgs' : []
+        'orgs': []
       });
     } catch (e) {
       rethrow;
@@ -51,14 +63,17 @@ class AuthVM extends ChangeNotifier {
   Future<void> signIn(
       String email, String password, BuildContext context) async {
     try {
-      auth.signInWithEmailAndPassword(email: email, password: password);
-      // Navigator.push(context, MaterialPageRoute(builder: (_) {
-      //   return HomeScreens();
-      // }));
+      showDialog(
+          context: context,
+          builder: (_) {
+            return const DialogLoading();
+          });
+     await auth.signInWithEmailAndPassword(email: email, password: password);
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
         return BuddyScreen();
       }), (route) => false);
     } catch (e) {
+      Navigator.pop(context);
       rethrow;
     }
   }

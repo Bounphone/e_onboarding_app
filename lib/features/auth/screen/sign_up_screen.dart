@@ -104,7 +104,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   password.text,
                                   firstname.text,
                                   lastname.text,
-                                  birthdate.text);
+                                  birthdate.text, context);
                             });
                       },
                     ),
@@ -117,7 +117,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         TextButton(
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (_){
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (_) {
                                 return LoginScreen();
                               }));
                             },
