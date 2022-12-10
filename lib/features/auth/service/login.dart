@@ -10,6 +10,8 @@ class Login{
     Response res = await Dio().post(AppUrl.url + AppUrl.login,
         data: body,
     );
-      
+      if(res.statusCode == 200){
+        return
+      }
   }
 }
