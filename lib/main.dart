@@ -1,10 +1,10 @@
-import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
-import 'package:e_onboarding_app/features/auth/screen/org_screen.dart';
-import 'package:e_onboarding_app/features/auth/screen/req_join_org_screen.dart';
+import 'dart:io';
+
 import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
 }
 
@@ -30,8 +30,19 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: const OrgScreen(),
+      home: const SignUpScreen(
+
+      ),
     );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
 
