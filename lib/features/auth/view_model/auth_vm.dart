@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
+import 'package:e_onboarding_app/features/home/buddy/screen/buddy_screen.dart';
 import 'package:e_onboarding_app/features/home/screens/home_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -47,12 +47,16 @@ class AuthVM extends ChangeNotifier {
   }
 
   /// Sign in
-  Future<void> signIn(String email, String password, BuildContext context) async {
+  Future<void> signIn(
+      String email, String password, BuildContext context) async {
     try {
       auth.signInWithEmailAndPassword(email: email, password: password);
-      Navigator.push(context, MaterialPageRoute(builder: (_){
-        return HomeScreens();
-      }));
+      // Navigator.push(context, MaterialPageRoute(builder: (_) {
+      //   return HomeScreens();
+      // }));
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
+        return BuddyScreen();
+      }), (route) => false);
     } catch (e) {
       rethrow;
     }
