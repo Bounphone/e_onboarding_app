@@ -1,6 +1,7 @@
 import '../auth.dart';
 import 'package:e_onboarding_app/features/auth/data/login_data.dart';
 import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
+import 'package:e_onboarding_app/features/auth/service/login.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:e_onboarding_app/widgets/text_field/text_field_widget.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             const SizedBox(height: 10),
                             const Text('Email'),
                             const SizedBox(height: 5),
-                            TextFieldWidget(controller: username),
+                            TextFieldWidget(controller: email),
                             const SizedBox(height: 10),
                             const Text('Password'),
                             const SizedBox(height: 5),
@@ -62,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               alignment: Alignment.centerRight,
                               child: TextButton(
                                   onPressed: () {},
-                                  child: Text(
+                                  child: const Text(
                                     'Forgot Password?',
                                     style: TextStyle(color: Colors.grey),
                                   )),
@@ -72,7 +73,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  ButtonWidgets(title: 'Login', onPress: () {}),
+                  ButtonWidgets(title: 'Login', onPress: () {
+                    Login.login(context, email.text, password.text);
+                  }),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
