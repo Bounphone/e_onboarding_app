@@ -4,9 +4,7 @@ import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:e_onboarding_app/widgets/text_field/text_field_widget.dart';
 import 'package:flutter/material.dart';
-
 import '../../../config/app_colors.dart';
-import '../../../config/app_textstyle.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
