@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
-  const TextFieldWidget({Key? key, required this.controller}) : super(key: key);
+  final bool hide;
+  const TextFieldWidget({Key? key, required this.controller, required this.hide}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: TextFormField(
+        obscureText: hide,
         controller: controller,
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
