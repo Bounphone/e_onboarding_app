@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/home/buddy/screen/buddy_screen.dart';
 import 'package:e_onboarding_app/features/home/screens/home_screen.dart';
+import 'package:e_onboarding_app/utils/auth_pref.dart';
 import 'package:e_onboarding_app/widgets/dialog/dialog_error.dart';
 import 'package:e_onboarding_app/widgets/dialog/dialog_loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,6 +18,13 @@ class AuthVM extends ChangeNotifier {
     try {
       await signUp(email, password);
       await addUser(firstName, lastName, birthDay, email);
+      await AuthPref().saveEmail(email);
+      await AuthPref().saveFirstName(firstName);
+      await AuthPref().saveLastName(lastName);
+      await AuthPref().saveBirthday(birthDay);
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
+        return BuddyScreen();
+      }), (route) => false);
     } on FirebaseAuthException catch (e) {
       /// if cannot upload data
       String message = '';
@@ -68,10 +76,20 @@ class AuthVM extends ChangeNotifier {
           builder: (_) {
             return const DialogLoading();
           });
-     await auth.signInWithEmailAndPassword(email: email, password: password);
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
-        return BuddyScreen();
-      }), (route) => false);
+      await auth.signInWithEmailAndPassword(email: email, password: password);
+      QuerySnapshot snapshot = await userProfileCollection.get();
+      for (var i in snapshot.docs) {
+        Map<String, dynamic> data = i.data()! as Map<String, dynamic>;
+        if (data['email'] == email) {
+          await AuthPref().saveEmail(email);
+          await AuthPref().saveFirstName(data['firstName']);
+          await AuthPref().saveLastName(data['lastName']);
+          await AuthPref().saveBirthday(data['birthDay']);
+          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
+            return HomeScreens();
+          }), (route) => false);
+        }
+      }
     } catch (e) {
       Navigator.pop(context);
       rethrow;

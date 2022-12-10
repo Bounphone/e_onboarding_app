@@ -38,19 +38,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Home',
+              label: 'My Goals',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.business),
-              label: 'Business',
+              label: 'Buddy',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.school),
-              label: 'School',
+              label: 'Feedback',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.school),
-              label: 'School',
+              label: 'Me',
             ),
           ],
           currentIndex: _selectedIndex,

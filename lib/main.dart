@@ -3,6 +3,8 @@ import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
 import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
 import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
 import 'package:e_onboarding_app/features/home/feedback/feedback_screen.dart';
+import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
+import 'package:e_onboarding_app/features/home/my_goals/my_goals_vm/my_goals_vm.dart';
 import 'package:e_onboarding_app/features/home/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +31,12 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return MultiProvider(
           providers: [
-            ChangeNotifierProvider<AuthVM>(create: (_) => AuthVM())
+            ChangeNotifierProvider<AuthVM>(create: (_) => AuthVM()),
+            ChangeNotifierProvider<MyGoalsVM>(create: (_) => MyGoalsVM()),
+            ChangeNotifierProvider<HomeVM>(create: (_) => HomeVM())
           ],
           child: MaterialApp(
-            theme: ThemeData(
-              fontFamily: 'Montserrat'
-            ),
+            theme: ThemeData(fontFamily: 'Montserrat'),
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
             home: LoginScreen(),
