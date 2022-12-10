@@ -1,7 +1,6 @@
 import '../auth.dart';
 import 'package:e_onboarding_app/features/auth/data/login_data.dart';
 import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
-import 'package:e_onboarding_app/features/auth/service/login.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:e_onboarding_app/widgets/text_field/text_field_widget.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   ButtonWidgets(title: 'Login', onPress: () {
-                    Login.login(context, email.text, password.text);
+                    // Login.login(context, email.text, password.text);
                   }),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

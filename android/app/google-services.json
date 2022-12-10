@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "557057080405",
+    "project_id": "e-onboarding-41beb",
+    "storage_bucket": "e-onboarding-41beb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557057080405:android:adb62deebe37cbfd67e8dc",
+        "android_client_info": {
+          "package_name": "com.eonbarding.android.e_onboarding_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557057080405-kdk0ot7ck2upjuqh398vsf978pipuekn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoyQOnkgTCpHrlMuLY1QPllkojytnPzIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557057080405-kdk0ot7ck2upjuqh398vsf978pipuekn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

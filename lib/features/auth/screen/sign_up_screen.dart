@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/app_colors.dart';
-import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:e_onboarding_app/widgets/text_field/text_field_widget.dart';
@@ -58,21 +57,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   fontSize: 20.sp,
                                   color: AppColor.primaryColor,
                                   fontWeight: FontWeight.bold)),
-                          SizedBox(height: 20),
+                          SizedBox(height: 20.h),
                           Text('First Name', style: TextStyle(fontSize: 12.sp)),
                           SizedBox(height: 5.h),
                           TextFieldWidget(controller: firstname),
                           SizedBox(height: 10.h),
                           Text('Last Name'),
-                          SizedBox(height: 5),
+                          SizedBox(height: 5.h),
                           TextFieldWidget(controller: lastname),
-                          SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           Text('Birthdate', style: TextStyle(fontSize: 12.sp)),
-                          SizedBox(height: 5),
+                          SizedBox(height: 5.h),
                           TextFieldWidget(controller: birthdate),
-                          SizedBox(height: 10),
+                          SizedBox(height: 10.h),
                           Text('Email', style: TextStyle(fontSize: 12.sp)),
-                          SizedBox(height: 5),
+                          SizedBox(height: 5.h),
                           TextFieldWidget(controller: email),
                           SizedBox(height: 10.h),
                           Text(
@@ -89,11 +88,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       builder: (context, model, _) {
                         return ButtonWidgets(
                             title: 'Next',
-                            onPress: () {
-                              /// parallel
-                              model.signUp(email.text, password.text);
-                              model.addUser(firstname.text, lastname.text,
-                                  birthdate.text, email.text);
+                            onPress: () async {
+                              model.onSignUp(
+                                  email.text,
+                                  password.text,
+                                  firstname.text,
+                                  lastname.text,
+                                  birthdate.text);
                             });
                       },
                     ),
