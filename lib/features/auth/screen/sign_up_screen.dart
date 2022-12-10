@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/app_colors.dart';
+import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
 import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:e_onboarding_app/widgets/text_field/text_field_widget.dart';
@@ -106,7 +107,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           style: TextStyle(fontSize: 12.sp),
                         ),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (_){
+                                return LoginScreen();
+                              }));
+                            },
                             child: Text('Login',
                                 style: TextStyle(
                                     color: AppColor.primaryColor,
