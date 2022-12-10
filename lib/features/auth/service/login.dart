@@ -1,8 +1,11 @@
+
 import 'package:dio/dio.dart';
 import 'package:e_onboarding_app/config/app_url.dart';
+import 'package:e_onboarding_app/features/home/my_goals/screens/my_goals_screen.dart';
+import 'package:flutter/material.dart';
 
 class Login{
-  static Future login(String email, String password) async{
+  static Future login(context, String email, String password) async{
     var body = {
       'email' : email,
       'password' : password,
@@ -11,7 +14,9 @@ class Login{
         data: body,
     );
       if(res.statusCode == 200){
-        return
+        return Navigator.push(context, MaterialPageRoute(builder: (context) => MyGoalScreen()));
+      }else{
+        print('no');
       }
   }
 }

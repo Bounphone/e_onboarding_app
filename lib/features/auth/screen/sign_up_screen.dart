@@ -2,6 +2,7 @@ import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/features/auth/data/sign_up_data.dart';
 import 'package:e_onboarding_app/features/auth/service/register.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
+import 'package:e_onboarding_app/widgets/dialog/dialog_error.dart';
 import 'package:e_onboarding_app/widgets/text_field/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -51,6 +52,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         const SizedBox(height: 5),
                         TextFieldWidget(controller: password),
                         const SizedBox(height: 10),
+                        const Text('Confirm password'),
+                        const SizedBox(height: 5),
+                        TextFieldWidget(controller: password),
+                        const SizedBox(height: 10),
                       ],
                     ),
                   )),
@@ -63,7 +68,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Have an account already?'),
-                  TextButton(onPressed: () {},
+                  TextButton(onPressed: () {
+                    showDialog(context: context, builder: (_){
+                        return const DialogError();
+                      });
+                  },
                       child: Text('Login',
                           style: TextStyle(color: AppColor.primaryColor)))
                 ],

@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
 import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
+import 'package:e_onboarding_app/features/home/buddy/screen/buddy_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,9 +32,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: const SignUpScreen(
-
-      ),
+      home:  const SignUpScreen(),
     );
   }
 }
