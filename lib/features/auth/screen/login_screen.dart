@@ -41,11 +41,11 @@ class LoginScreen extends StatelessWidget {
                             const SizedBox(height: 10),
                             const Text('Email'),
                             const SizedBox(height: 5),
-                            TextFieldWidget(controller: email),
+                            TextFieldWidget(controller: email, hide: false),
                             const SizedBox(height: 10),
                             const Text('Password'),
                             const SizedBox(height: 5),
-                            TextFieldWidget(controller: password),
+                            TextFieldWidget(controller: password, hide: true),
                             Align(
                               alignment: Alignment.centerRight,
                               child: TextButton(

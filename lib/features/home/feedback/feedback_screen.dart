@@ -3,14 +3,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class FeedBackScreen extends StatefulWidget {
-  const FeedBackScreen({Key? key}) : super(key: key);
+class WebViewScreen extends StatefulWidget {
+  String url;
+  WebViewScreen({required this.url});
 
   @override
-  State<FeedBackScreen> createState() => _FeedBackScreenState();
+  State<WebViewScreen> createState() => _WebViewScreenState();
 }
 
-class _FeedBackScreenState extends State<FeedBackScreen> {
+class _WebViewScreenState extends State<WebViewScreen> {
 
   @override
   void initState() {
@@ -20,13 +21,9 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child:  Scaffold(
-        body: WebView(
+    return WebView(
           javascriptMode: JavascriptMode.unrestricted,
-          initialUrl: 'https://urbuddydemo.netlify.app/',
-        ),
-      ),
+          initialUrl: widget.url,
     );
   }
 }

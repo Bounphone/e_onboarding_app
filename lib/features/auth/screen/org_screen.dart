@@ -30,7 +30,7 @@ class _OrgScreenState extends State<OrgScreen> {
           children: [
             const Text('Search org', style: TextStyle(fontSize: 20, color: AppColor.primaryColor, fontWeight: FontWeight.bold)),
             const SizedBox(height: 20),
-            TextFieldWidget(controller: companyID),
+            TextFieldWidget(controller: companyID, hide: false),
             const Spacer(),
             ButtonWidgets(title: 'Search', onPress: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ReqJoinOrgScreen()));
