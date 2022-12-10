@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/home/screens/home_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +38,8 @@ class AuthVM extends ChangeNotifier {
         'firstName': firstName,
         'lastName': lastName,
         'birthDay': birthDay,
-        'email': email
+        'email': email,
+        'orgs' : []
       });
     } catch (e) {
       rethrow;
