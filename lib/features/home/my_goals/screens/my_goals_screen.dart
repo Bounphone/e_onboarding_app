@@ -4,6 +4,7 @@ import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
 import 'package:e_onboarding_app/features/home/my_goals/models/my_task_model.dart';
 import 'package:e_onboarding_app/features/home/my_goals/screens/add_task_screen.dart';
+import 'package:e_onboarding_app/utils/set_color/set_my_goals_color.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -104,15 +105,16 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                               MyTaskModel taskData = MyTaskModel.fromJson(data);
 
                               /// if assignee's email == user's email
-                              if (taskData.data!.assigneeEmail ==
-                                  model.getEmail) {
+                              if (taskData.assigneeEmail == model.getEmail) {
                                 return SizedBox(
                                   width: double.infinity,
                                   child: Card(
                                     elevation: 5,
-                                    shape: const Border.fromBorderSide(
-                                        BorderSide(
-                                            color: AppColor.secondColor)),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.r),
+                                        side: const BorderSide(
+                                            color: AppColor.primaryColor)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(20.0),
                                       child: Column(
@@ -120,23 +122,40 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            taskData.data!.taskTitle ?? 'ບໍ່ມີ',
+                                            taskData.taskTitle ?? 'ບໍ່ມີ',
                                           ),
-                                          Text(taskData.data!.taskDetail ??
-                                              'ບໍ່ມີ'),
+                                          Text(taskData.taskDetail ?? 'ບໍ່ມີ'),
                                           Align(
                                             alignment: Alignment.centerRight,
-                                            child: Container(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: 5.h,
-                                                  horizontal: 20.w),
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  color: Colors.grey),
-                                              child: Text(
-                                                  taskData.data!.taskStatus ??
-                                                      'None'),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                data.update('taskStatus',
+                                                    (value) {
+                                                  return value == 'Do the task'
+                                                      ? 'Completed'
+                                                      : 'Do the task';
+                                                });
+                                              },
+                                              child: Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: 8.h,
+                                                    horizontal: 20.w),
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    color: setMyGoalsColor(
+                                                        taskData.taskStatus ??
+                                                            'Do the task')),
+                                                child: Text(
+                                                  taskData.taskStatus ??
+                                                      'Do the task',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ),
+                                              ),
                                             ),
                                           )
                                         ],

@@ -29,17 +29,16 @@ class MyGoalsVM extends ChangeNotifier {
           DateTime now = DateTime.now();
           String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
           MyTaskModel myTaskData = MyTaskModel(
-              data: Data(
-                  assigneeEmail: email,
-                  assigneeFirstname: firstName,
-                  assigneeLastname: lastName,
-                  assignorEmail: email,
-                  assignorFirstname: firstName,
-                  assignorLastname: lastName,
-                  taskCreatedTime: formattedDate,
-                  taskDetail: detail,
-                  taskStatus: 'UnCompleted',
-                  taskTitle: title));
+              assigneeEmail: email,
+              assigneeFirstname: firstName,
+              assigneeLastname: lastName,
+              assignorEmail: email,
+              assignorFirstname: firstName,
+              assignorLastname: lastName,
+              taskCreatedTime: formattedDate,
+              taskDetail: detail,
+              taskStatus: 'Do the task',
+              taskTitle: title);
           Map<String, dynamic> myTaskJsonData = myTaskData.toJson();
           await myTask.add(myTaskJsonData);
           final snackBar = SnackBar(

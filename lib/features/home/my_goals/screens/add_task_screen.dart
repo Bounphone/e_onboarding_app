@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../data/my_goals_data.dart';
-
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({Key? key}) : super(key: key);
 
@@ -16,6 +14,8 @@ class AddTaskScreen extends StatefulWidget {
 }
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
+  final title = TextEditingController();
+  final detail = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Consumer<MyGoalsVM>(builder: (context, model, _) {
@@ -54,7 +54,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   onPress: () {
                     model.addNewTask(title.text, detail.text, context);
                   }),
-              ButtonWidgets(title: 'do it laer', onPress: () {}),
+              // ButtonWidgets(title: 'do it later', onPress: () {}),
               SizedBox(height: 10.h),
             ],
           ),
