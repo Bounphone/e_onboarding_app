@@ -64,15 +64,6 @@ class LoginScreen extends StatelessWidget {
                                       return 'Please enter your password';
                                     }
                                   }),
-                              Align(
-                                alignment: Alignment.centerRight,
-                                child: TextButton(
-                                    onPressed: () {},
-                                    child: const Text(
-                                      'Forgot Password?',
-                                      style: TextStyle(color: Colors.grey),
-                                    )),
-                              )
                             ],
                           ),
                         ),
