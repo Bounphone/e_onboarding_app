@@ -104,7 +104,7 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                               MyTaskModel taskData = MyTaskModel.fromJson(data);
 
                               /// if assignee's email == user's email
-                              if (taskData.data!.assigneeEmail ==
+                              if (taskData.assigneeEmail ==
                                   model.getEmail) {
                                 return SizedBox(
                                   width: double.infinity,
@@ -120,9 +120,9 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            taskData.data!.taskTitle ?? 'ບໍ່ມີ',
+                                            taskData.taskTitle ?? 'ບໍ່ມີ',
                                           ),
-                                          Text(taskData.data!.taskDetail ??
+                                          Text(taskData.taskDetail ??
                                               'ບໍ່ມີ'),
                                           Align(
                                             alignment: Alignment.centerRight,
@@ -135,7 +135,7 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                                                       BorderRadius.circular(10),
                                                   color: Colors.grey),
                                               child: Text(
-                                                  taskData.data!.taskStatus ??
+                                                  taskData.taskStatus ??
                                                       'None'),
                                             ),
                                           )
