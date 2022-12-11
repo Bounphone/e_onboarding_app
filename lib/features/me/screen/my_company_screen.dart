@@ -75,9 +75,9 @@ class _MyCompanyScreenState extends State<MyCompanyScreen> {
               ),
               SizedBox(height: 10.h),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 5.w),
+                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
                 child: ListView(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   children:
                       snapshot.data!.docs.map((DocumentSnapshot document) {
