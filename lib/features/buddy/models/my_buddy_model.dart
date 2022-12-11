@@ -17,16 +17,16 @@ class MyBuddyModel {
   List<Buddy>? buddies;
 
   factory MyBuddyModel.fromJson(Map<String, dynamic> json) => MyBuddyModel(
-    orgName: json["orgName"] == null ? null : json["orgName"],
-    userEmail: json["userEmail"] == null ? null : json["userEmail"],
+    orgName: json["orgName"],
+    userEmail: json["userEmail"],
     buddies: json["buddies"] == null
         ? null
         : List<Buddy>.from(json["buddies"].map((x) => Buddy.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "orgName": orgName == null ? null : orgName,
-    "userEmail": userEmail == null ? null : userEmail,
+    "orgName": orgName,
+    "userEmail": userEmail,
     "buddies": buddies == null
         ? null
         : List<dynamic>.from(buddies!.map((x) => x.toJson())),
@@ -46,15 +46,15 @@ class Buddy {
   String? buddySurname;
 
   factory Buddy.fromJson(Map<String, dynamic> json) => Buddy(
-        buddyEmail: json["buddyEmail"] == null ? null : json["buddyEmail"],
-        buddyName: json["buddyName"] == null ? null : json["buddyName"],
+        buddyEmail: json["buddyEmail"],
+        buddyName: json["buddyName"],
         buddySurname:
-            json["buddySurname"] == null ? null : json["buddySurname"],
+            json["buddySurname"],
       );
 
   Map<String, dynamic> toJson() => {
-        "buddyEmail": buddyEmail == null ? null : buddyEmail,
-        "buddyName": buddyName == null ? null : buddyName,
-        "buddySurname": buddySurname == null ? null : buddySurname,
+        "buddyEmail": buddyEmail,
+        "buddyName": buddyName,
+        "buddySurname": buddySurname,
       };
 }

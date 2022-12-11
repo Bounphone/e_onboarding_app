@@ -22,20 +22,20 @@ class FeedbackModel {
   String? orgFeedback;
 
   factory FeedbackModel.fromJson(Map<String, dynamic> json) => FeedbackModel(
-    title: json["title"] == null ? null : json["title"],
-    detail: json["detail"] == null ? null : json["detail"],
-    postTime: json["postTime"] == null ? null : json["postTime"],
+    title: json["title"],
+    detail: json["detail"],
+    postTime: json["postTime"],
     liked: json["liked"] == null ? null : List<String>.from(json["liked"].map((x) => x)),
     unLiked: json["unLiked"] == null ? null : List<String>.from(json["unLiked"].map((x) => x)),
-    orgFeedback: json["orgFeedback"] == null ? null : json["orgFeedback"],
+    orgFeedback: json["orgFeedback"],
   );
 
   Map<String, dynamic> toJson() => {
-    "title": title == null ? null : title,
-    "detail": detail == null ? null : detail,
-    "postTime": postTime == null ? null : postTime,
+    "title": title,
+    "detail": detail,
+    "postTime": postTime,
     "liked": liked == null ? null : List<dynamic>.from(liked!.map((x) => x)),
     "unLiked": unLiked == null ? null : List<dynamic>.from(unLiked!.map((x) => x)),
-    "orgFeedback": orgFeedback == null ? null : orgFeedback,
+    "orgFeedback": orgFeedback,
   };
 }

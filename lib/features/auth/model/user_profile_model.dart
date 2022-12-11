@@ -23,20 +23,20 @@ class UserProfileModel {
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) =>
       UserProfileModel(
-        birthDay: json["birthDay"] == null ? null : json["birthDay"],
-        email: json["email"] == null ? null : json["email"],
-        firstName: json["firstName"] == null ? null : json["firstName"],
-        lastName: json["lastName"] == null ? null : json["lastName"],
+        birthDay: json["birthDay"],
+        email: json["email"],
+        firstName: json["firstName"],
+        lastName: json["lastName"],
         orgs: json["orgs"] == null
             ? null
             : List<Org>.from(json["orgs"].map((x) => Org.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "birthDay": birthDay == null ? null : birthDay,
-        "email": email == null ? null : email,
-        "firstName": firstName == null ? null : firstName,
-        "lastName": lastName == null ? null : lastName,
+        "birthDay": birthDay,
+        "email": email,
+        "firstName": firstName,
+        "lastName": lastName,
         "orgs": orgs == null
             ? null
             : List<dynamic>.from(orgs!.map((x) => x.toJson())),
@@ -59,19 +59,19 @@ class Org {
   String? orgID;
 
   factory Org.fromJson(Map<String, dynamic> json) => Org(
-        joinedTime: json["joinedTime"] == null ? null : json["joinedTime"],
+        joinedTime: json["joinedTime"],
         orgDescription:
-            json["orgDescription"] == null ? null : json["orgDescription"],
-        orgName: json["orgName"] == null ? null : json["orgName"],
-        orgStatus: json["orgStatus"] == null ? null : json["orgStatus"],
-    orgID: json["orgID"] == null ? null : json["orgID"],
+            json["orgDescription"],
+        orgName: json["orgName"],
+        orgStatus: json["orgStatus"],
+    orgID: json["orgID"],
       );
 
   Map<String, dynamic> toJson() => {
-        "joinedTime": joinedTime == null ? null : joinedTime,
-        "orgDescription": orgDescription == null ? null : orgDescription,
-        "orgName": orgName == null ? null : orgName,
-        "orgStatus": orgStatus == null ? null : orgStatus,
-    "orgID": orgID == null ? null : orgID,
+        "joinedTime": joinedTime,
+        "orgDescription": orgDescription,
+        "orgName": orgName,
+        "orgStatus": orgStatus,
+    "orgID": orgID,
       };
 }
