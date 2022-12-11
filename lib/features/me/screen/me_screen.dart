@@ -11,22 +11,11 @@ class MeScreen extends StatefulWidget {
 class _MeScreenState extends State<MeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.secondColor,
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Column(
-                children: [
-                  Text('Hello'),
-                  Text('Name'),
-                ],
-              ),
-              CircleAvatar(),
-            ],
-          )
-        ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColor.secondColor,
+        body: Padding(
+            padding: EdgeInsets.symmetric())
       ),
     );
   }
