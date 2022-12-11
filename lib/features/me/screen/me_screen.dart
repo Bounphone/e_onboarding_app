@@ -1,4 +1,5 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
+import 'package:e_onboarding_app/features/org/screens/org_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,25 +22,82 @@ class _MeScreenState extends State<MeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 10.h),
+                Text('Hello!',
+                    style: TextStyle(
+                        color: AppColor.primaryColor, fontSize: 15.sp)),
+                Text('Name',
+                    style: TextStyle(
+                        color: AppColor.primaryColor,
+                        fontSize: 25.sp,
+                        fontWeight: FontWeight.bold)),
+                Text('30-60-90 Day Plan',
+                    style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.orangeColor)),
+                SizedBox(height: 20.h),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Hello!',
-                            style: TextStyle(color: AppColor.primaryColor, fontSize: 15.sp)),
-                        Text('Name',
-                            style: TextStyle(
-                                color: AppColor.primaryColor,
-                                fontSize: 25.sp,
-                                fontWeight: FontWeight.bold)),
-                      ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => OrgScreen()));
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.all(8.h),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8.r)),
+                            child: Icon(Icons.home),
+                          ),
+                          SizedBox(height: 5.h),
+                          Text('My company')
+                        ],
+                      ),
                     ),
-                    CircleAvatar(),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => OrgScreen()));
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(8.h),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8.r)),
+                            child: Icon(Icons.home),
+                          ),
+                          SizedBox(height: 5.h),
+                          Text('My previous task')
+                        ],
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => OrgScreen()));
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(8.h),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8.r)),
+                            child: Icon(Icons.home),
+                          ),
+                          SizedBox(height: 5.h),
+                          Text('Undone task')
+                        ],
+                      ),
+                    ),
                   ],
-                ),
-                Text('30-60-90 Day Plan', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: AppColor.orangeColor)),
+                )
               ],
             ),
           )),
