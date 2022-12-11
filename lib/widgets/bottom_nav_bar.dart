@@ -20,7 +20,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     MyGoalScreen(),
     // BuddyScreen(),
     FeedbackScreen(),
-    // MeScreen(),
+    MeScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -49,10 +49,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
               icon: Icon(Icons.school),
               label: 'Feedback',
             ),
-            // BottomNavigationBarItem(
-            //   icon: Icon(Icons.school),
-            //   label: 'Me',
-            // ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: 'Me',
+            ),
           ],
           currentIndex: _selectedIndex,
           selectedItemColor: AppColor.primaryColor,

@@ -1,7 +1,5 @@
-import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
 import 'package:e_onboarding_app/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreens extends StatefulWidget {
   const HomeScreens({Key? key}) : super(key: key);

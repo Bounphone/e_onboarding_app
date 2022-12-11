@@ -11,7 +11,6 @@ import 'package:provider/provider.dart';
 import 'feedback_comment.dart';
 
 class FeedbackScreen extends StatefulWidget {
-  const FeedbackScreen({Key? key}) : super(key: key);
 
   @override
   State<FeedbackScreen> createState() => _FeedbackScreenState();
@@ -45,28 +44,28 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                       SizedBox(
                         height: 20.h,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Feedback',
-                              style: TextStyle(
-                                  color: AppColor.primaryColor,
-                                  fontSize: 25.sp,
-                                  fontWeight: FontWeight.bold)),
-                          CircleAvatar(
-                            backgroundColor: AppColor.secondColor,
-                            child: IconButton(
-                                onPressed: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (_) {
-                                    return FeedbackComment();
-                                  }));
-                                },
-                                icon: Icon(Icons.add,
-                                    color: AppColor.primaryColor)),
-                          ),
-                        ],
-                      ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Feedback',
+                                style: TextStyle(
+                                    color: AppColor.primaryColor,
+                                    fontSize: 25.sp,
+                                    fontWeight: FontWeight.bold)),
+                            CircleAvatar(
+                              backgroundColor: AppColor.secondColor,
+                              child: IconButton(
+                                  onPressed: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (_) {
+                                      return FeedbackComment();
+                                    }));
+                                  },
+                                  icon: Icon(Icons.add,
+                                      color: AppColor.primaryColor)),
+                            ),
+                          ],
+                        ),
                       SizedBox(
                         height: 20.h,
                       ),
@@ -83,7 +82,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           FeedbackModel feedbackModel =
                               FeedbackModel.fromJson(data);
 
-                          /// if assignee's email == user's email
+                          /// query via org name
                           if (feedbackModel.orgFeedback == orgName) {
                             String title = feedbackModel.title ?? 'none';
                             String detail = feedbackModel.detail ?? 'none';
