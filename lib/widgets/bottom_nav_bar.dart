@@ -1,4 +1,5 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
+import 'package:e_onboarding_app/feedback/screen/feedback_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../features/buddy/screen/buddy_screen.dart';
@@ -19,7 +20,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   static List<Widget> _widgetOptions = <Widget>[
     MyGoalScreen(),
     BuddyScreen(),
-    WebViewScreen(url: 'https://urbuddydemo.netlify.app/'),
+    FeedbackScreen(),
     Container(),
   ];
 
