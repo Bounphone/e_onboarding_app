@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'feedback_comment.dart';
+
 class FeedbackScreen extends StatefulWidget {
   const FeedbackScreen({Key? key}) : super(key: key);
 
@@ -52,7 +54,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                             backgroundColor: AppColor.secondColor,
                             child: IconButton(
                                 onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (_){
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (_) {
                                     return FeedbackComment();
                                   }));
                                 },

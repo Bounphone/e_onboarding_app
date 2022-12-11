@@ -2,8 +2,7 @@ import 'package:e_onboarding_app/widgets/icon/circle_avatar_icon.dart';
 import 'package:e_onboarding_app/widgets/text_field/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../config/app_colors.dart';
+import '../../../config/app_colors.dart';
 
 class FeedbackComment extends StatefulWidget {
   const FeedbackComment({Key? key}) : super(key: key);

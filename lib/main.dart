@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
             ChangeNotifierProvider<AuthVM>(create: (_) => AuthVM()),
             ChangeNotifierProvider<MyGoalsVM>(create: (_) => MyGoalsVM()),
             ChangeNotifierProvider<HomeVM>(create: (_) => HomeVM()),
-            ChangeNotifierProvider<OrgVM>(create: (_) => OrgVM())
+            ChangeNotifierProvider<OrgVM>(create: (_) => OrgVM()),
+            ChangeNotifierProvider<OrgVM>(create: (_) => OrgVM()),
           ],
           child: MaterialApp(
             theme: ThemeData(fontFamily: 'Montserrat'),

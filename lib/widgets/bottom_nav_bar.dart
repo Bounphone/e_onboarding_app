@@ -1,9 +1,7 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
-import 'package:e_onboarding_app/feedback/screen/feedback_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../features/buddy/screen/buddy_screen.dart';
-import '../features/feedback/feedback_screen.dart';
+import '../features/feedbacks/screen/feedback_screen.dart';
 import '../features/my_goals/screens/my_goals_screen.dart';
 
 class BottomNavBar extends StatefulWidget {

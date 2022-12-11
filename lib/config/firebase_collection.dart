@@ -9,4 +9,6 @@ class FirebaseCollection {
   FirebaseFirestore.instance.collection('MyTask');
   static CollectionReference organizations =
   FirebaseFirestore.instance.collection('Organizations');
+  static CollectionReference feedback =
+  FirebaseFirestore.instance.collection('Feedback');
 }
