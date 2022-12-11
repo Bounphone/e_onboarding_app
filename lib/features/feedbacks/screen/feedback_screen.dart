@@ -64,6 +64,40 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           ),
                         ],
                       ),
+                      SizedBox(height: 20.h),
+                      SizedBox(
+                        width: double.infinity,
+                        child: Card(
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.r),
+                              side: const BorderSide(
+                                  color: AppColor.primaryColor)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('title',
+                                    style: TextStyle(
+                                        color: AppColor.primaryColor,
+                                        fontSize: 18.sp, fontWeight: FontWeight.bold)),
+                                SizedBox(height: 10),
+                                Text('ບໍ່ມີ', style: TextStyle(fontSize: 14.sp)),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    IconButton(onPressed: (){}, icon: Icon(Icons.thumb_up)),
+                                    Text('like'),
+                                    IconButton(onPressed: (){}, icon: Icon(Icons.thumb_down)),
+                                    Text('dislike'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ));
