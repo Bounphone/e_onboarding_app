@@ -3,14 +3,14 @@ import 'package:e_onboarding_app/widgets/icon/circle_avatar_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class UnCompleteTaskScreen extends StatefulWidget {
-  const UnCompleteTaskScreen({Key? key}) : super(key: key);
+class MyUnDoneTask extends StatefulWidget {
+  const MyUnDoneTask({Key? key}) : super(key: key);
 
   @override
-  State<UnCompleteTaskScreen> createState() => _UnCompleteTaskScreenState();
+  State<MyUnDoneTask> createState() => _MyUnDoneTaskState();
 }
 
-class _UnCompleteTaskScreenState extends State<UnCompleteTaskScreen> {
+class _MyUnDoneTaskState extends State<MyUnDoneTask> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,4 +1,5 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
+import 'package:e_onboarding_app/config/app_icons.dart';
 import 'package:e_onboarding_app/features/me/models/me_button_model.dart';
 import 'package:e_onboarding_app/features/me/screen/my_company_screen.dart';
 import 'package:e_onboarding_app/features/me/screen/my_previous_task.dart';
@@ -16,8 +17,9 @@ class MeScreen extends StatefulWidget {
 
 class _MeScreenState extends State<MeScreen> {
   List<MeButtonModel> buttons = [
-    MeButtonModel(title: 'a', image: 'a', screen: MyCompanyScreen()),
-    MeButtonModel(title: 'a', image: 'a', screen: MyCompanyScreen()),
+    MeButtonModel(title: 'My company', image: AppIcons.companyIcon, screen: MyCompanyScreen()),
+    MeButtonModel(title: 'My Previous task', image: AppIcons.previousIcon, screen: MyPreviousTaskScreen()),
+    MeButtonModel(title: 'Undone task', image: AppIcons.unDoneIcon, screen: MyUnDoneTask()),
   ];
 
   @override
@@ -62,7 +64,10 @@ class _MeScreenState extends State<MeScreen> {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(8.r)),
-                            child: Icon(Icons.home),
+                            child: ImageIcon(
+                              AssetImage(AppIcons.companyIcon),
+                              color: AppColor.primaryColor,
+                            )
                           ),
                           SizedBox(height: 5.h),
                           Text('My company')
@@ -83,7 +88,10 @@ class _MeScreenState extends State<MeScreen> {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(8.r)),
-                            child: Icon(Icons.home),
+                            child: ImageIcon(
+                              AssetImage(AppIcons.previousIcon),
+                              color: AppColor.primaryColor,
+                            )
                           ),
                           SizedBox(height: 5.h),
                           Text('My previous task')
@@ -95,7 +103,7 @@ class _MeScreenState extends State<MeScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (_) => UnCompleteTaskScreen()));
+                                builder: (_) => MyUnDoneTask()));
                       },
                       child: Column(
                         children: [
@@ -104,7 +112,10 @@ class _MeScreenState extends State<MeScreen> {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(8.r)),
-                            child: Icon(Icons.home),
+                           child: ImageIcon(
+                             AssetImage(AppIcons.unDoneIcon),
+                             color: AppColor.primaryColor,
+                           )
                           ),
                           SizedBox(height: 5.h),
                           Text('Undone task')
