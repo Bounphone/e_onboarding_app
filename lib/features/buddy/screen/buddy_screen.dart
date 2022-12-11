@@ -87,7 +87,7 @@ class _BuddyScreenState extends State<BuddyScreen> {
                                       onTap: () {
                                         Navigator.push(context,
                                             MaterialPageRoute(builder: (_) {
-                                              return BuddyChatScreen();
+                                              return const BuddyChatScreen();
                                             }));
                                       },
                                       child: Card(

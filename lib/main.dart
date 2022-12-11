@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
 import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
+import 'package:e_onboarding_app/features/buddy/screen/buddy_profile_screen.dart';
 import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
 import 'package:e_onboarding_app/features/my_goals/my_goals_vm/my_goals_vm.dart';
+import 'package:e_onboarding_app/feedback/screen/feedback_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(fontFamily: 'Montserrat'),
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
-            home: LoginScreen(),
+            home: FeedbackScreen(),
           ),
         );
       },
