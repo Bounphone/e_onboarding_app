@@ -1,25 +1,17 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/features/my_goals/models/my_task_model.dart';
-import 'package:e_onboarding_app/widgets/button/my_goal_button.dart';
 import 'package:e_onboarding_app/widgets/icon/circle_avatar_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-
-import '../my_goals_vm/my_goals_vm.dart';
 
 class MyGoalsDetailScreen extends StatefulWidget {
   final String title;
   final String detail;
-  bool showButton;
-  MyTaskModel? taskData;
-  String? id;
 
   MyGoalsDetailScreen(
       {Key? key,
       required this.title,
-      required this.detail,
-      required this.showButton, this.taskData, this.id})
+      required this.detail,})
       : super(key: key);
 
   @override
@@ -55,9 +47,9 @@ class _MyGoalsDetailScreenState extends State<MyGoalsDetailScreen> {
                 ),
               ),
             ),
-            widget.showButton
-                ? MyGoalButton(taskData: widget.taskData!, id: widget.id ?? '')
-                : Container(),
+            // widget.showButton
+            //     ? MyGoalButton(taskData: widget.taskData!, id: widget.id ?? '')
+            //     : Container(),
           ],
         ),
       ),
