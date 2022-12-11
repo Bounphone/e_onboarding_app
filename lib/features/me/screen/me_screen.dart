@@ -24,7 +24,7 @@ class _MeScreenState extends State<MeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 10.h),
+                SizedBox(height: 30.h),
                 Text('Hello!',
                     style: TextStyle(
                         color: AppColor.primaryColor, fontSize: 15.sp)),
@@ -44,8 +44,10 @@ class _MeScreenState extends State<MeScreen> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => MyCompanyScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => MyCompanyScreen()));
                       },
                       child: Column(
                         children: <Widget>[
@@ -63,8 +65,10 @@ class _MeScreenState extends State<MeScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => MyPreviousTaskScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => MyPreviousTaskScreen()));
                       },
                       child: Column(
                         children: [
@@ -82,8 +86,10 @@ class _MeScreenState extends State<MeScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => UnCompleteTaskScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => UnCompleteTaskScreen()));
                       },
                       child: Column(
                         children: [
