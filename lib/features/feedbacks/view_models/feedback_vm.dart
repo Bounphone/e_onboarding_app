@@ -30,7 +30,7 @@ class FeedbackVM extends ChangeNotifier {
           String? orgName = await OrgPref().getOrgName();
           CollectionReference myFeedback = FirebaseCollection.feedback;
           DateTime now = DateTime.now();
-          String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
+          String formattedDate = DateFormat('yyyy-MM-dd kk:mm:ss').format(now);
           FeedbackModel feedbackData = FeedbackModel(
               title: title,
               detail: detail,
@@ -39,19 +39,8 @@ class FeedbackVM extends ChangeNotifier {
               unLiked: [],
               orgFeedback: orgName);
           Map<String, dynamic> myFeedbackJSON = feedbackData.toJson();
-          // MyTaskModel myTaskData = MyTaskModel(
-          //     assigneeEmail: email,
-          //     assigneeFirstname: firstName,
-          //     assigneeLastname: lastName,
-          //     assignorEmail: email,
-          //     assignorFirstname: firstName,
-          //     assignorLastname: lastName,
-          //     taskCreatedTime: formattedDate,
-          //     taskDetail: detail,
-          //     taskStatus: 'Do the task',
-          //     taskTitle: title,
-          //     organizationName: orgName);
-          // Map<String, dynamic> myTaskJsonData = myTaskData.toJson();
+
+          /// Add feedback to DB
           await myFeedback.add(myFeedbackJSON);
           final snackBar = SnackBar(
             content: Text('Insert success'),

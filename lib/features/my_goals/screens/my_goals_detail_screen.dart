@@ -46,13 +46,13 @@ class _MyGoalsDetailScreenState extends State<MyGoalsDetailScreen> {
             ),
             GestureDetector(
               onTap: () {
-                // data.update('taskStatus',
-                //         (value) {
-                //       return value ==
-                //           'Do the task'
-                //           ? 'Completed'
-                //           : 'Do the task';
-                //     });
+                data.update('taskStatus',
+                        (value) {
+                      return value ==
+                          'Do the task'
+                          ? 'Completed'
+                          : 'Do the task';
+                    });
               },
               child: Container(
                 width: double.infinity,

@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
+import 'package:e_onboarding_app/features/feedbacks/models/feedback_models.dart';
+import 'package:e_onboarding_app/features/org/view_model/org_vm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import 'feedback_comment.dart';
 
@@ -64,6 +67,26 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           ),
                         ],
                       ),
+                      ListView(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        children: snapshot.data!.docs
+                            .map((DocumentSnapshot document) {
+                          Map<String, dynamic> data =
+                              document.data()! as Map<String, dynamic>;
+                          String? orgName = context.read<OrgVM>().getOrgName;
+
+                          /// Parse data to model
+                          FeedbackModel feedbackModel =
+                              FeedbackModel.fromJson(data);
+
+                          /// if assignee's email == user's email
+                          if (feedbackModel.orgFeedback == orgName) {
+                            return Container();
+                          }
+                          return Container();
+                        }).toList(),
+                      )
                     ],
                   ),
                 ));
