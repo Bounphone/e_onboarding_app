@@ -1,3 +1,4 @@
+import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class BuddyChatScreen extends StatefulWidget {
@@ -11,6 +12,7 @@ class _BuddyChatScreenState extends State<BuddyChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.secondColor,
       body: ListView.builder(
           itemCount: 3,
           itemBuilder: (context, i){
