@@ -1,11 +1,12 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/config/app_icons.dart';
+import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
 import 'package:e_onboarding_app/features/me/models/me_button_model.dart';
 import 'package:e_onboarding_app/features/me/screen/my_company_screen.dart';
-import 'package:e_onboarding_app/features/me/screen/my_previous_task.dart';
-import 'package:e_onboarding_app/features/me/screen/uncomplete_task.dart';
+import 'package:e_onboarding_app/features/me/screen/my_employee_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class MeScreen extends StatefulWidget {
   const MeScreen({Key? key}) : super(key: key);
@@ -16,13 +17,27 @@ class MeScreen extends StatefulWidget {
 
 class _MeScreenState extends State<MeScreen> {
   List<MeButtonModel> buttons = [
-    MeButtonModel(title: 'My company', image: AppIcons.companyIcon, screen: MyCompanyScreen()),
-    MeButtonModel(title: 'My Previous task', image: AppIcons.previousIcon, screen: MyPreviousTaskScreen()),
-    MeButtonModel(title: 'Undone task', image: AppIcons.unDoneIcon, screen: MyUnDoneTask()),
+    MeButtonModel(
+        title: 'My company',
+        image: AppIcons.companyIcon,
+        screen: MyCompanyScreen()),
+    // MeButtonModel(
+    //     title: 'Completed task',
+    //     image: AppIcons.previousIcon,
+    //     screen: MyGoalScreen(
+    //       status: 'Completed',
+    //     )),
+    // MeButtonModel(
+    //     title: 'Undone task',
+    //     image: AppIcons.unDoneIcon,
+    //     screen: MyGoalScreen(
+    //       status: "Do the task",
+    //     )),
   ];
 
   @override
   Widget build(BuildContext context) {
+    String? firstName = context.read<HomeVM>().getFirstName;
     return SafeArea(
       child: Scaffold(
           backgroundColor: AppColor.thirdColor,
@@ -35,7 +50,7 @@ class _MeScreenState extends State<MeScreen> {
                 Text('Hello!',
                     style: TextStyle(
                         color: AppColor.primaryColor, fontSize: 15.sp)),
-                Text('Name',
+                Text(firstName ?? 'None',
                     style: TextStyle(
                         color: AppColor.primaryColor,
                         fontSize: 25.sp,
@@ -48,81 +63,31 @@ class _MeScreenState extends State<MeScreen> {
                 SizedBox(height: 20.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => MyCompanyScreen()));
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.all(8.h),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(8.r)),
-                            child: ImageIcon(
-                              AssetImage(AppIcons.companyIcon),
-                              color: AppColor.primaryColor,
-                            )
-                          ),
-                          SizedBox(height: 5.h),
-                          Text('My company')
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => MyPreviousTaskScreen()));
-                      },
-                      child: Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(8.h),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(8.r)),
-                            child: ImageIcon(
-                              AssetImage(AppIcons.previousIcon),
-                              color: AppColor.primaryColor,
-                            )
-                          ),
-                          SizedBox(height: 5.h),
-                          Text('My previous task')
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => MyUnDoneTask()));
-                      },
-                      child: Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(8.h),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(8.r)),
-                           child: ImageIcon(
-                             AssetImage(AppIcons.unDoneIcon),
-                             color: AppColor.primaryColor,
-                           )
-                          ),
-                          SizedBox(height: 5.h),
-                          Text('Undone task')
-                        ],
-                      ),
-                    ),
-                  ],
-                )
+                  children: buttons
+                      .map((e) => InkWell(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (_) => e.screen));
+                            },
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                    padding: EdgeInsets.all(8.h),
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(8.r)),
+                                    child: ImageIcon(
+                                      AssetImage(e.image),
+                                      color: AppColor.primaryColor,
+                                    )),
+                                SizedBox(height: 5.h),
+                                Text(e.title)
+                              ],
+                            ),
+                          ))
+                      .toList(),
+                ),
               ],
             ),
           )),
