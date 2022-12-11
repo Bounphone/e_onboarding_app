@@ -24,7 +24,7 @@ class AuthVM extends ChangeNotifier {
       await AuthPref().saveLastName(lastName);
       await AuthPref().saveBirthday(birthDay);
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
-        return BuddyScreen();
+        return OrgScreen();
       }), (route) => false);
     } on FirebaseAuthException catch (e) {
       /// if cannot upload data
