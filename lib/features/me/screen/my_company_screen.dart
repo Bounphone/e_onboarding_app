@@ -89,8 +89,8 @@ class _MyCompanyScreenState extends State<MyCompanyScreen> {
                     OrgModel orgData = OrgModel.fromJson(data);
 
                     /// query via org name
-                    if (orgData.orgName == orgName) {
-                      for (var i in orgData.members!) {
+                    if (orgData.data!.orgName == orgName) {
+                      for (var i in orgData.data!.members!) {
                         return MyEmployeeListScreen(
                             email: i.memberEmail ?? 'None',
                             lastName: i.memberLastName ?? 'None',
