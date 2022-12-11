@@ -3,6 +3,7 @@ import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
 import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
 import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
 import 'package:e_onboarding_app/features/my_goals/my_goals_vm/my_goals_vm.dart';
+import 'package:e_onboarding_app/features/org/view_model/org_vm.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
           providers: [
             ChangeNotifierProvider<AuthVM>(create: (_) => AuthVM()),
             ChangeNotifierProvider<MyGoalsVM>(create: (_) => MyGoalsVM()),
-            ChangeNotifierProvider<HomeVM>(create: (_) => HomeVM())
+            ChangeNotifierProvider<HomeVM>(create: (_) => HomeVM()),
+            ChangeNotifierProvider<OrgVM>(create: (_) => OrgVM())
           ],
           child: MaterialApp(
             theme: ThemeData(fontFamily: 'Montserrat'),

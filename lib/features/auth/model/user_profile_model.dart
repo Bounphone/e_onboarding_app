@@ -49,12 +49,14 @@ class Org {
     this.orgDescription,
     this.orgName,
     this.orgStatus,
+    this.orgID,
   });
 
   String? joinedTime;
   String? orgDescription;
   String? orgName;
   String? orgStatus;
+  String? orgID;
 
   factory Org.fromJson(Map<String, dynamic> json) => Org(
         joinedTime: json["joinedTime"] == null ? null : json["joinedTime"],
@@ -62,6 +64,7 @@ class Org {
             json["orgDescription"] == null ? null : json["orgDescription"],
         orgName: json["orgName"] == null ? null : json["orgName"],
         orgStatus: json["orgStatus"] == null ? null : json["orgStatus"],
+    orgID: json["orgID"] == null ? null : json["orgID"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -69,5 +72,6 @@ class Org {
         "orgDescription": orgDescription == null ? null : orgDescription,
         "orgName": orgName == null ? null : orgName,
         "orgStatus": orgStatus == null ? null : orgStatus,
+    "orgID": orgID == null ? null : orgID,
       };
 }

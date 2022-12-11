@@ -13,13 +13,6 @@ class HomeScreens extends StatefulWidget {
 class _HomeScreensState extends State<HomeScreens> {
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    context.read<HomeVM>().initUserData();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.green,

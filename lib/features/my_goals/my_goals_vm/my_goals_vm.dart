@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
 import 'package:e_onboarding_app/utils/shared_pref/auth_pref.dart';
+import 'package:e_onboarding_app/utils/shared_pref/org_pref.dart';
 import 'package:e_onboarding_app/widgets/dialog/dialog_error.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -26,6 +27,7 @@ class MyGoalsVM extends ChangeNotifier {
             return LoginScreen();
           }), (route) => false);
         } else {
+          String? orgName = await OrgPref().getOrgName();
           CollectionReference myTask = FirebaseCollection.myTask;
           DateTime now = DateTime.now();
           String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
@@ -39,7 +41,8 @@ class MyGoalsVM extends ChangeNotifier {
               taskCreatedTime: formattedDate,
               taskDetail: detail,
               taskStatus: 'Do the task',
-              taskTitle: title);
+              taskTitle: title,
+              organizationName: orgName);
           Map<String, dynamic> myTaskJsonData = myTaskData.toJson();
           await myTask.add(myTaskJsonData);
           final snackBar = SnackBar(

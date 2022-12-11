@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
-import 'package:e_onboarding_app/features/home/screens/home_screen.dart';
+import 'package:e_onboarding_app/features/org/screens/org_screen.dart';
 import 'package:e_onboarding_app/utils/shared_pref/auth_pref.dart';
 import 'package:e_onboarding_app/widgets/dialog/dialog_error.dart';
 import 'package:e_onboarding_app/widgets/dialog/dialog_loading.dart';
@@ -87,7 +87,7 @@ class AuthVM extends ChangeNotifier {
           await AuthPref().saveLastName(data['lastName']);
           await AuthPref().saveBirthday(data['birthDay']);
           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) {
-            return HomeScreens();
+            return OrgScreen();
           }), (route) => false);
         }
       }
