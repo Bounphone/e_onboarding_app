@@ -1,4 +1,5 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
+import 'package:e_onboarding_app/features/me/models/me_button_model.dart';
 import 'package:e_onboarding_app/features/me/screen/my_company_screen.dart';
 import 'package:e_onboarding_app/features/me/screen/my_previous_task.dart';
 import 'package:e_onboarding_app/features/me/screen/uncomplete_task.dart';
@@ -14,6 +15,11 @@ class MeScreen extends StatefulWidget {
 }
 
 class _MeScreenState extends State<MeScreen> {
+  List<MeButtonModel> buttons = [
+    MeButtonModel(title: 'a', image: 'a', screen: MyCompanyScreen()),
+    MeButtonModel(title: 'a', image: 'a', screen: MyCompanyScreen()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
