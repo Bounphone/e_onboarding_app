@@ -34,11 +34,9 @@ class AuthVM extends ChangeNotifier {
       } else {
         message = e.message!;
       }
-      showDialog(
-          context: context,
-          builder: (_) {
-            return DialogError(message: message);
-          });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(message)),
+      );
       rethrow;
     }
   }
@@ -64,6 +62,7 @@ class AuthVM extends ChangeNotifier {
         'orgs': []
       });
     } catch (e) {
+
       rethrow;
     }
   }
@@ -91,7 +90,10 @@ class AuthVM extends ChangeNotifier {
           }), (route) => false);
         }
       }
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.message.toString())),
+      );
       Navigator.pop(context);
       rethrow;
     }
