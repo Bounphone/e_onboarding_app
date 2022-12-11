@@ -18,7 +18,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     MyGoalScreen(),
-    BuddyScreen(),
+    // BuddyScreen(),
     FeedbackScreen(),
     MeScreen(),
   ];
@@ -41,10 +41,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
               icon: Icon(Icons.home),
               label: 'My Goals',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.business),
-              label: 'Buddy',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.business),
+            //   label: 'Buddy',
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.school),
               label: 'Feedback',

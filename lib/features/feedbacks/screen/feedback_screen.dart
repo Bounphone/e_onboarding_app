@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/feedbacks/models/feedback_models.dart';
+import 'package:e_onboarding_app/features/my_goals/screens/my_goals_detail_screen.dart';
 import 'package:e_onboarding_app/features/org/view_model/org_vm.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +23,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     return SafeArea(
       child: Scaffold(
         body: StreamBuilder(
-          stream: FirebaseCollection.organizations.snapshots(),
+          stream: FirebaseCollection.feedback.snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             /// Error
@@ -67,6 +67,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           ),
                         ],
                       ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
                       ListView(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
@@ -82,7 +85,64 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
                           /// if assignee's email == user's email
                           if (feedbackModel.orgFeedback == orgName) {
-                            return Container();
+                            String title = feedbackModel.title ?? 'none';
+                            String detail = feedbackModel.detail ?? 'none';
+                            return GestureDetector(
+                              onTap: () {
+                                /// Navigate to detail
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (_) {
+                                  return MyGoalsDetailScreen(
+                                    title: title,
+                                    detail: detail,
+                                    showButton: false,
+                                  );
+                                }));
+                              },
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: Card(
+                                  elevation: 5,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.r),
+                                      side: const BorderSide(
+                                          color: AppColor.primaryColor)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(title,
+                                            style: TextStyle(
+                                                color: AppColor.primaryColor,
+                                                fontSize: 18.sp,
+                                                fontWeight: FontWeight.bold)),
+                                        SizedBox(height: 10),
+                                        Text(detail,
+                                            style: TextStyle(fontSize: 14.sp)),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(Icons.thumb_up)),
+                                            Text(
+                                                '${feedbackModel.liked!.length ?? 0}'),
+                                            IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(Icons.thumb_down)),
+                                            Text(
+                                                '${feedbackModel.unLiked!.length ?? 0}'),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
                           }
                           return Container();
                         }).toList(),
