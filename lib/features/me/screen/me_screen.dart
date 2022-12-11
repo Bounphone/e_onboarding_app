@@ -1,4 +1,6 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
+import 'package:e_onboarding_app/features/me/screen/my_company_screen.dart';
+import 'package:e_onboarding_app/features/me/screen/uncomplete_task.dart';
 import 'package:e_onboarding_app/features/org/screens/org_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,7 +44,7 @@ class _MeScreenState extends State<MeScreen> {
                     InkWell(
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => OrgScreen()));
+                            MaterialPageRoute(builder: (_) => MyCompanyScreen()));
                       },
                       child: Column(
                         children: <Widget>[
@@ -80,7 +82,7 @@ class _MeScreenState extends State<MeScreen> {
                     InkWell(
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => OrgScreen()));
+                            MaterialPageRoute(builder: (_) => UnCompleteTaskScreen()));
                       },
                       child: Column(
                         children: [
