@@ -1,4 +1,4 @@
-import 'package:e_onboarding_app/features/home/my_goals/my_goals_vm/my_goals_vm.dart';
+import 'package:e_onboarding_app/features/my_goals/my_goals_vm/my_goals_vm.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:e_onboarding_app/widgets/icon/circle_avatar_icon.dart';
 import 'package:e_onboarding_app/widgets/text_field/text_field_widget.dart';

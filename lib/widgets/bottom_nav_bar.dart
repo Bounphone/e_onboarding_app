@@ -1,10 +1,9 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
-import 'package:e_onboarding_app/config/app_icons.dart';
-import 'package:e_onboarding_app/features/home/buddy/screen/buddy_screen.dart';
-import 'package:e_onboarding_app/features/home/feedback/feedback_screen.dart';
-import 'package:e_onboarding_app/features/home/my_goals/screens/my_goals_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import '../features/buddy/screen/buddy_screen.dart';
+import '../features/feedback/feedback_screen.dart';
+import '../features/my_goals/screens/my_goals_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -16,7 +15,7 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     MyGoalScreen(),
     BuddyScreen(),
@@ -29,6 +28,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       _selectedIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

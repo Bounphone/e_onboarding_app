@@ -1,11 +1,8 @@
 import 'dart:io';
 import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
-import 'package:e_onboarding_app/features/auth/screen/sign_up_screen.dart';
 import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
-import 'package:e_onboarding_app/features/home/feedback/feedback_screen.dart';
 import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
-import 'package:e_onboarding_app/features/home/my_goals/my_goals_vm/my_goals_vm.dart';
-import 'package:e_onboarding_app/features/home/screens/home_screen.dart';
+import 'package:e_onboarding_app/features/my_goals/my_goals_vm/my_goals_vm.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

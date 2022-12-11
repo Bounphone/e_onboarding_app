@@ -2,14 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/config/app_image.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
-import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
-import 'package:e_onboarding_app/features/home/buddy/models/my_buddy_model.dart';
-import 'package:e_onboarding_app/features/home/buddy/screen/buddy_chat_screen.dart';
 import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
+import '../models/my_buddy_model.dart';
+import 'buddy_chat_screen.dart';
 
 class BuddyScreen extends StatefulWidget {
   const BuddyScreen({Key? key}) : super(key: key);

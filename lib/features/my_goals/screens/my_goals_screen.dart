@@ -2,13 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
-import 'package:e_onboarding_app/features/home/my_goals/models/my_task_model.dart';
-import 'package:e_onboarding_app/features/home/my_goals/screens/add_task_screen.dart';
+import 'package:e_onboarding_app/features/my_goals/models/my_task_model.dart';
 import 'package:e_onboarding_app/utils/set_color/set_my_goals_color.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
+import 'add_task_screen.dart';
 
 class MyGoalScreen extends StatefulWidget {
   const MyGoalScreen({Key? key}) : super(key: key);
