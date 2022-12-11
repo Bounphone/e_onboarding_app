@@ -75,7 +75,7 @@ class _MyCompanyScreenState extends State<MyCompanyScreen> {
               ),
               SizedBox(height: 10.h),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
+                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
                 child: ListView(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
