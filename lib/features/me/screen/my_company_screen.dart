@@ -90,13 +90,15 @@ class _MyCompanyScreenState extends State<MyCompanyScreen> {
 
                     /// query via org name
                     if (orgData.data!.orgName == orgName) {
-                      for (var i in orgData.data!.members!) {
-                        return MyEmployeeListScreen(
-                            email: i.memberEmail ?? 'None',
-                            lastName: i.memberLastName ?? 'None',
-                            firstName: i.memberFirstName ?? 'None',
-                            index: 0);
-                      }
+                      return Column(
+                        children: orgData.data!.members!
+                            .map((e) => MyEmployeeListScreen(
+                            email: e.memberEmail ?? 'None',
+                            lastName: e.memberLastName ?? 'None',
+                            firstName: e.memberFirstName ?? 'None',
+                            index: 0))
+                            .toList(),
+                      );
                     }
                     return Container();
                   }).toList(),

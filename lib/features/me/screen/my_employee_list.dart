@@ -17,6 +17,7 @@ class MyEmployeeListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 5.h),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
           border:
