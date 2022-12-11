@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(fontFamily: 'Montserrat'),
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
-            home: const BuddyProfileScreen(),
+            home: LoginScreen(),
           ),
         );
       },
