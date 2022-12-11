@@ -1,4 +1,5 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
+import 'package:e_onboarding_app/features/me/screen/me_screen.dart';
 import 'package:flutter/material.dart';
 import '../features/buddy/screen/buddy_screen.dart';
 import '../features/feedbacks/screen/feedback_screen.dart';
@@ -19,7 +20,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     MyGoalScreen(),
     BuddyScreen(),
     FeedbackScreen(),
-    Container(),
+    MeScreen(),
   ];
 
   void _onItemTapped(int index) {
