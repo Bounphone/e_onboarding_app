@@ -1,5 +1,6 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/features/me/screen/my_company_screen.dart';
+import 'package:e_onboarding_app/features/me/screen/my_previous_task.dart';
 import 'package:e_onboarding_app/features/me/screen/uncomplete_task.dart';
 import 'package:e_onboarding_app/features/org/screens/org_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _MeScreenState extends State<MeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: AppColor.secondColor,
+          backgroundColor: AppColor.thirdColor,
           body: Padding(
             padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 20.w),
             child: Column(
@@ -63,7 +64,7 @@ class _MeScreenState extends State<MeScreen> {
                     InkWell(
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => OrgScreen()));
+                            MaterialPageRoute(builder: (_) => MyPreviousTaskScreen()));
                       },
                       child: Column(
                         children: [
