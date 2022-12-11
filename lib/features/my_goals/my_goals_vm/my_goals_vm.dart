@@ -30,7 +30,7 @@ class MyGoalsVM extends ChangeNotifier {
           String? orgName = await OrgPref().getOrgName();
           CollectionReference myTask = FirebaseCollection.myTask;
           DateTime now = DateTime.now();
-          String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
+          String formattedDate = DateFormat('yyyy-MM-dd kk:mm:ss').format(now);
           MyTaskModel myTaskData = MyTaskModel(
               assigneeEmail: email,
               assigneeFirstname: firstName,

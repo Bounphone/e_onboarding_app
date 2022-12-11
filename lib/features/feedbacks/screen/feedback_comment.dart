@@ -1,7 +1,9 @@
+import 'package:e_onboarding_app/features/feedbacks/view_models/feedback_vm.dart';
 import 'package:e_onboarding_app/widgets/icon/circle_avatar_icon.dart';
 import 'package:e_onboarding_app/widgets/text_field/text_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import '../../../config/app_colors.dart';
 
 class FeedbackComment extends StatefulWidget {
@@ -36,8 +38,7 @@ class _FeedbackCommentState extends State<FeedbackComment> {
                             color: AppColor.primaryColor,
                             fontSize: 25.sp,
                             fontWeight: FontWeight.bold)),
-                    Text('lorem'),
-                    SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     Text('Title'),
                     SizedBox(height: 5),
                     TextFieldWidget(controller: title, hide: false),
@@ -49,17 +50,25 @@ class _FeedbackCommentState extends State<FeedbackComment> {
                 ),
               )),
               GestureDetector(
+                onTap: () {
+                  context
+                      .read<FeedbackVM>()
+                      .addNewFeedback(title.text, detail.text, context);
+                },
                 child: Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 8.h),
-                  decoration: BoxDecoration(
-                    color: AppColor.primaryColor,
-                    borderRadius: BorderRadius.circular(8.r),
-                  ),
-                  child: Center(
-                    child: Text('Submit', style: TextStyle(fontSize: 22.sp, color: Colors.white, fontWeight: FontWeight.bold)),
-                  )
-                ),
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                    decoration: BoxDecoration(
+                      color: AppColor.primaryColor,
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Center(
+                      child: Text('Submit',
+                          style: TextStyle(
+                              fontSize: 22.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    )),
               )
             ],
           ),

@@ -6,9 +6,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class MyGoalsDetailScreen extends StatefulWidget {
   final String title;
   final String detail;
+  bool showButton;
 
-  const MyGoalsDetailScreen(
-      {Key? key, required this.title, required this.detail})
+  MyGoalsDetailScreen(
+      {Key? key,
+      required this.title,
+      required this.detail,
+      required this.showButton})
       : super(key: key);
 
   @override
@@ -38,42 +42,32 @@ class _MyGoalsDetailScreenState extends State<MyGoalsDetailScreen> {
                             fontSize: 28.sp,
                             color: AppColor.primaryColor,
                             fontWeight: FontWeight.bold)),
-                    SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Text(widget.detail, style: TextStyle(fontSize: 15.sp)),
                   ],
                 ),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                // data.update('taskStatus',
-                //         (value) {
-                //       return value ==
-                //           'Do the task'
-                //           ? 'Completed'
-                //           : 'Do the task';
-                //     });
-              },
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(
-                    vertical: 8.h,
-                    horizontal: 20.w),
-                decoration: BoxDecoration(
-                    borderRadius:
-                    BorderRadius.circular(
-                        10),
-                    color: AppColor.primaryColor),
-                child: const Center(
-                  child: Text('Complete this task',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight:
-                        FontWeight.w700),
-                  ),
-                )
-              ),
-            ),
+            widget.showButton
+                ? GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(
+                            vertical: 8.h, horizontal: 20.w),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: AppColor.primaryColor),
+                        child: const Center(
+                          child: Text(
+                            'Complete this task',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        )),
+                  )
+                : Container(),
           ],
         ),
       ),
