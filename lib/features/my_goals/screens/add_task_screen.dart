@@ -16,8 +16,11 @@ class AddTaskScreen extends StatefulWidget {
 class _AddTaskScreenState extends State<AddTaskScreen> {
   final title = TextEditingController();
   final detail = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+
     return Consumer<MyGoalsVM>(builder: (context, model, _) {
       return Scaffold(
         appBar: AppBar(
@@ -31,22 +34,41 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             children: [
               Expanded(
                   child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Add Task',style: TextStyle(fontSize: 14.sp)),
-                    SizedBox(height: 20.h),
-                    Text('Title',style: TextStyle(fontSize: 14.sp)),
-                    SizedBox(height: 5.h),
-                    TextFieldWidget(controller: title, hide: false),
-                    SizedBox(height: 20.h),
-                    Text('Detail',style: TextStyle(fontSize: 14.sp),),
-                    SizedBox(height: 5.h),
-                    TextFieldWidget(
-                      controller: detail,
-                      hide: false,
-                    ),
-                  ],
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Add Task', style: TextStyle(fontSize: 14.sp)),
+                      SizedBox(height: 20.h),
+                      Text('Title', style: TextStyle(fontSize: 14.sp)),
+                      SizedBox(height: 5.h),
+                      TextFieldWidget(
+                        controller: title,
+                        hide: false,
+                        validator: (title) {
+                          if(title == null){
+                            return 'Please enter some title';
+                          }
+                        },
+                      ),
+                      SizedBox(height: 20.h),
+                      Text(
+                        'Detail',
+                        style: TextStyle(fontSize: 14.sp),
+                      ),
+                      SizedBox(height: 5.h),
+                      TextFieldWidget(
+                        controller: detail,
+                        hide: false,
+                        validator: (detail) {
+                          if(detail == null){
+                            return 'Please enter some detail';
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               )),
               ButtonWidgets(

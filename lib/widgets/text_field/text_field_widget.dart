@@ -4,7 +4,9 @@ class TextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final bool hide;
   void Function(String)? onChanged;
-   TextFieldWidget({Key? key, required this.controller, required this.hide, this.onChanged}) : super(key: key);
+  final FormFieldValidator validator;
+
+   TextFieldWidget({Key? key, required this.controller, required this.hide, this.onChanged, required this.validator}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +15,7 @@ class TextFieldWidget extends StatelessWidget {
       child: TextFormField(
         obscureText: hide,
         controller: controller,
+        validator: validator,
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),

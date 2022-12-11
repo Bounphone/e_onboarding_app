@@ -19,6 +19,8 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
 
+  final _formKey = GlobalKey<FormState>();
+
   final firstname = TextEditingController();
   final lastname = TextEditingController();
   final birthdate = TextEditingController();
@@ -52,46 +54,86 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Expanded(
                         child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Sign up',
-                              style: TextStyle(
-                                  fontSize: 20.sp,
-                                  color: AppColor.primaryColor,
-                                  fontWeight: FontWeight.bold)),
-                          SizedBox(height: 20.h),
-                          Text('First Name', style: TextStyle(fontSize: 12.sp)),
-                          SizedBox(height: 5.h),
-                          TextFieldWidget(controller: firstname, hide: false),
-                          SizedBox(height: 10.h),
-                          Text('Last Name'),
-                          SizedBox(height: 5.h),
-                          TextFieldWidget(controller: lastname, hide: false),
-                          SizedBox(height: 10.h),
-                          Text('Birthdate', style: TextStyle(fontSize: 12.sp)),
-                          SizedBox(height: 5.h),
-                          TextFieldWidget(controller: birthdate, hide: false),
-                          SizedBox(height: 10.h),
-                          Text('Email', style: TextStyle(fontSize: 12.sp)),
-                          SizedBox(height: 5.h),
-                          TextFieldWidget(controller: email, hide: false),
-                          SizedBox(height: 10.h),
-                          Text(
-                            'Password',
-                            style: TextStyle(fontSize: 12.sp),
-                          ),
-                          SizedBox(height: 5.h),
-                          TextFieldWidget(controller: password, hide: true),
-                          SizedBox(height: 10.sp),
-                          Text(
-                            'Confirm password',
-                            style: TextStyle(fontSize: 12.sp),
-                          ),
-                          SizedBox(height: 5.h),
-                          TextFieldWidget(controller: confirmPw, hide: true),
-                          SizedBox(height: 10.sp),
-                        ],
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Sign up',
+                                style: TextStyle(
+                                    fontSize: 20.sp,
+                                    color: AppColor.primaryColor,
+                                    fontWeight: FontWeight.bold)),
+                            SizedBox(height: 20.h),
+                            Text('First Name', style: TextStyle(fontSize: 12.sp)),
+                            SizedBox(height: 5.h),
+                            TextFieldWidget(
+                                controller: firstname, hide: false,
+                              validator: (firstname) {
+                                if(firstname == null){
+                                  return 'Please enter some title';
+                                }
+                              },
+                            ),
+                            SizedBox(height: 10.h),
+                            Text('Last Name'),
+                            SizedBox(height: 5.h),
+                            TextFieldWidget(controller: lastname, hide: false,
+                              validator: (lastname) {
+                                if(lastname == null){
+                                  return 'Please enter some title';
+                                }
+                              },
+                            ),
+                            SizedBox(height: 10.h),
+                            Text('Birthdate', style: TextStyle(fontSize: 12.sp)),
+                            SizedBox(height: 5.h),
+                            TextFieldWidget(controller: birthdate, hide: false,
+                              validator: (birthdate) {
+                                if(birthdate == null){
+                                  return 'Please enter some title';
+                                }
+                              },
+                            ),
+                            SizedBox(height: 10.h),
+                            Text('Email', style: TextStyle(fontSize: 12.sp)),
+                            SizedBox(height: 5.h),
+                            TextFieldWidget(controller: email, hide: false,
+                              validator: (email) {
+                                if(email == null){
+                                  return 'Please enter some title';
+                                }
+                              },
+                            ),
+                            SizedBox(height: 10.h),
+                            Text(
+                              'Password',
+                              style: TextStyle(fontSize: 12.sp),
+                            ),
+                            SizedBox(height: 5.h),
+                            TextFieldWidget(controller: password, hide: true,
+                              validator: (password) {
+                                if(password == null){
+                                  return 'Please enter some title';
+                                }
+                              },
+                            ),
+                            SizedBox(height: 10.sp),
+                            Text(
+                              'Confirm password',
+                              style: TextStyle(fontSize: 12.sp),
+                            ),
+                            SizedBox(height: 5.h),
+                            TextFieldWidget(controller: confirmPw, hide: true,
+                              validator: (confirmPw) {
+                                if(confirmPw == null){
+                                  return 'Please enter some title';
+                                }
+                              },
+                            ),
+                            SizedBox(height: 10.sp),
+                          ],
+                        ),
                       ),
                     )),
                     Consumer<AuthVM>(

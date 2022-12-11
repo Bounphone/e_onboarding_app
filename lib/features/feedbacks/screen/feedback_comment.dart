@@ -14,6 +14,7 @@ class FeedbackComment extends StatefulWidget {
 }
 
 class _FeedbackCommentState extends State<FeedbackComment> {
+  final _formKey = GlobalKey<FormState>();
   final title = TextEditingController();
   final detail = TextEditingController();
   @override
@@ -30,23 +31,39 @@ class _FeedbackCommentState extends State<FeedbackComment> {
             children: [
               Expanded(
                   child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Feedback',
-                        style: TextStyle(
-                            color: AppColor.primaryColor,
-                            fontSize: 25.sp,
-                            fontWeight: FontWeight.bold)),
-                    SizedBox(height: 20.h),
-                    Text('Title'),
-                    SizedBox(height: 5),
-                    TextFieldWidget(controller: title, hide: false),
-                    SizedBox(height: 20),
-                    Text('Detail'),
-                    SizedBox(height: 5),
-                    TextFieldWidget(controller: detail, hide: false),
-                  ],
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Feedback',
+                          style: TextStyle(
+                              color: AppColor.primaryColor,
+                              fontSize: 25.sp,
+                              fontWeight: FontWeight.bold)),
+                      SizedBox(height: 20.h),
+                      Text('Title'),
+                      SizedBox(height: 5),
+                      TextFieldWidget(
+                          controller: title, hide: false,
+                        validator: (title) {
+                            if(title == null){
+                             return 'Please enter some title';
+                            }
+                        },
+                      ),
+                      SizedBox(height: 20),
+                      Text('Detail'),
+                      SizedBox(height: 5),
+                      TextFieldWidget(controller: detail, hide: false,
+                        validator: (detail) {
+                          if(detail == null){
+                            return 'Please enter some title';
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               )),
               GestureDetector(

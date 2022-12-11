@@ -28,13 +28,12 @@ class _MyCompanyScreenState extends State<MyCompanyScreen> {
             color: AppColor.primaryColor,
             child: Column(
               children: [
-                CircleAvatar(),
-                SizedBox(height: 5.h),
                 Text('Company name',
                     style: TextStyle(
                         fontSize: 25.sp,
                         color: Colors.white,
                         fontWeight: FontWeight.bold)),
+                SizedBox(height: 30.h),
               ],
             ),
           ),
