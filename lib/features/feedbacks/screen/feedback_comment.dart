@@ -69,11 +69,10 @@ class _FeedbackCommentState extends State<FeedbackComment> {
               GestureDetector(
                 onTap: () {
                   if(_formKey.currentState!.validate()){
-                    return;
+                    context
+                        .read<FeedbackVM>()
+                        .addNewFeedback(title.text, detail.text, context);
                   }
-                  context
-                      .read<FeedbackVM>()
-                      .addNewFeedback(title.text, detail.text, context);
                 },
                 child: Container(
                     width: double.infinity,

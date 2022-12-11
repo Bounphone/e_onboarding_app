@@ -76,9 +76,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   title: 'Add to do today',
                   onPress: () {
                     if(_formKey.currentState!.validate()){
-                        return;
+                        model.addNewTask(title.text, detail.text, context);
                     }
-                    model.addNewTask(title.text, detail.text, context);
                   }),
               // ButtonWidgets(title: 'do it later', onPress: () {}),
               SizedBox(height: 10.h),

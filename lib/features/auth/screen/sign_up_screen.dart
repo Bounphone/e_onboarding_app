@@ -144,14 +144,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             title: 'Next',
                             onPress: () async {
                               if(_formKey.currentState!.validate()){
-                                return;
+                                model.onSignUp(
+                                    email.text,
+                                    password.text,
+                                    firstname.text,
+                                    lastname.text,
+                                    birthdate.text, context);
                               }
-                              model.onSignUp(
-                                  email.text,
-                                  password.text,
-                                  firstname.text,
-                                  lastname.text,
-                                  birthdate.text, context);
                             });
                       },
                     ),

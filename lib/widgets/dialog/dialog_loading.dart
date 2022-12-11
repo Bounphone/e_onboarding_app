@@ -18,7 +18,7 @@ class DialogLoading extends StatelessWidget {
                   color: AppColor.primaryColor,
                 ),
                 SizedBox(height: 30),
-                Text('Success!'),
+                Text('Loading...'),
                 SizedBox(height: 30),
               ],
             ),

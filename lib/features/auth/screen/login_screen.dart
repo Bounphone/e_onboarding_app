@@ -74,9 +74,8 @@ class LoginScreen extends StatelessWidget {
                           title: 'Login',
                           onPress: () {
                             if(_formKey.currentState!.validate()){
-                              return;
+                              model.signIn(email.text, password.text, context);
                             }
-                            model.signIn(email.text, password.text, context);
                           });
                     }),
                     Row(
