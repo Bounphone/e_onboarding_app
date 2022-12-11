@@ -65,18 +65,15 @@ class MyGoalsVM extends ChangeNotifier {
 
   /// Update task status
   Future<void> updateTaskStatus(MyTaskModel taskData, String id) async {
-    try{
+    try {
       CollectionReference myTask = FirebaseCollection.myTask;
       String status =
-      taskData.taskStatus == 'Completed' ? 'Do the task' : 'Completed';
+          taskData.taskStatus == 'Completed' ? 'Do the task' : 'Completed';
       taskData.taskStatus = status;
       Map<String, dynamic> data = taskData.toJson();
-      myTask
-          .doc(id) // <-- Doc ID where data should be updated.
-          .update(data);
-    }
-        catch(e){
+      myTask.doc(id).update(data);
+    } catch (e) {
       rethrow;
-        }
+    }
   }
 }

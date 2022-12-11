@@ -115,9 +115,6 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                                                       taskData.taskTitle ?? "",
                                                   detail:
                                                       taskData.taskDetail ?? "",
-                                                  showButton: true,
-                                                  taskData: taskData,
-                                                  id: document.id,
                                                 )));
                                   },
                                   child: SizedBox(

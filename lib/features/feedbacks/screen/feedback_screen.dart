@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/feedbacks/models/feedback_models.dart';
+import 'package:e_onboarding_app/features/feedbacks/view_models/feedback_vm.dart';
 import 'package:e_onboarding_app/features/my_goals/screens/my_goals_detail_screen.dart';
 import 'package:e_onboarding_app/features/org/view_model/org_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
 import 'feedback_comment.dart';
 
 class FeedbackScreen extends StatefulWidget {
@@ -95,7 +95,6 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                   return MyGoalsDetailScreen(
                                     title: title,
                                     detail: detail,
-                                    showButton: false,
                                   );
                                 }));
                               },
@@ -125,16 +124,10 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,
                                           children: [
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: Icon(Icons.thumb_up)),
-                                            Text(
-                                                '${feedbackModel.liked!.length ?? 0}'),
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: Icon(Icons.thumb_down)),
-                                            Text(
-                                                '${feedbackModel.unLiked!.length ?? 0}'),
+                                            button(context, feedbackModel,
+                                                document, true),
+                                            button(context, feedbackModel,
+                                                document, false),
                                           ],
                                         ),
                                       ],
@@ -153,6 +146,24 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           },
         ),
       ),
+    );
+  }
+
+  Row button(BuildContext context, FeedbackModel feedbackModel,
+      DocumentSnapshot<Object?> document, bool isLiked) {
+    return Row(
+      children: [
+        IconButton(
+            onPressed: () {
+              /// On click button
+              context
+                  .read<FeedbackVM>()
+                  .onLikeFeedBack(feedbackModel, document.id, context, isLiked);
+            },
+            icon: Icon(isLiked ? Icons.thumb_up : Icons.thumb_down)),
+        Text(
+            '${isLiked ? feedbackModel.liked!.length ?? 0 : feedbackModel.unLiked!.length ?? 0}')
+      ],
     );
   }
 }

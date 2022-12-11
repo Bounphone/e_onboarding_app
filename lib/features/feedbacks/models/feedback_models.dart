@@ -17,16 +17,16 @@ class FeedbackModel {
   String? title;
   String? detail;
   String? postTime;
-  List<Liked>? liked;
-  List<Liked>? unLiked;
+  List<String>? liked;
+  List<String>? unLiked;
   String? orgFeedback;
 
   factory FeedbackModel.fromJson(Map<String, dynamic> json) => FeedbackModel(
     title: json["title"] == null ? null : json["title"],
     detail: json["detail"] == null ? null : json["detail"],
     postTime: json["postTime"] == null ? null : json["postTime"],
-    liked: json["liked"] == null ? null : List<Liked>.from(json["liked"].map((x) => Liked.fromJson(x))),
-    unLiked: json["unLiked"] == null ? null : List<Liked>.from(json["unLiked"].map((x) => Liked.fromJson(x))),
+    liked: json["liked"] == null ? null : List<String>.from(json["liked"].map((x) => x)),
+    unLiked: json["unLiked"] == null ? null : List<String>.from(json["unLiked"].map((x) => x)),
     orgFeedback: json["orgFeedback"] == null ? null : json["orgFeedback"],
   );
 
@@ -34,24 +34,8 @@ class FeedbackModel {
     "title": title == null ? null : title,
     "detail": detail == null ? null : detail,
     "postTime": postTime == null ? null : postTime,
-    "liked": liked == null ? null : List<dynamic>.from(liked!.map((x) => x.toJson())),
-    "unLiked": unLiked == null ? null : List<dynamic>.from(unLiked!.map((x) => x.toJson())),
+    "liked": liked == null ? null : List<dynamic>.from(liked!.map((x) => x)),
+    "unLiked": unLiked == null ? null : List<dynamic>.from(unLiked!.map((x) => x)),
     "orgFeedback": orgFeedback == null ? null : orgFeedback,
-  };
-}
-
-class Liked {
-  Liked({
-    this.userEmail,
-  });
-
-  String? userEmail;
-
-  factory Liked.fromJson(Map<String, dynamic> json) => Liked(
-    userEmail: json["userEmail"] == null ? null : json["userEmail"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "userEmail": userEmail == null ? null : userEmail,
   };
 }

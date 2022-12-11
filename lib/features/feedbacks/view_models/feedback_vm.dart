@@ -1,13 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/auth/screen/login_screen.dart';
+import 'package:e_onboarding_app/features/auth/view_model/auth_vm.dart';
 import 'package:e_onboarding_app/features/feedbacks/models/feedback_models.dart';
-import 'package:e_onboarding_app/features/my_goals/models/my_task_model.dart';
+import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
 import 'package:e_onboarding_app/utils/shared_pref/auth_pref.dart';
 import 'package:e_onboarding_app/utils/shared_pref/org_pref.dart';
 import 'package:e_onboarding_app/widgets/dialog/dialog_error.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class FeedbackVM extends ChangeNotifier {
   /// on add new feedback
@@ -55,6 +57,47 @@ class FeedbackVM extends ChangeNotifier {
               return DialogError(message: 'ກະລຸນາປ້ອນຂໍ້ມູນໃຫ້ຄົບຖ້ວນ');
             });
       }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  /// When user like / unliked feedback
+  Future<void> onLikeFeedBack(FeedbackModel feedbackModel, String id,
+      BuildContext context, bool isLiked) async {
+    try {
+      CollectionReference feedback = FirebaseCollection.feedback;
+      String? email = context.read<HomeVM>().getEmail;
+
+      /// if user ever liked this post
+      if (isLiked) {
+        if (feedbackModel.liked!.any((element) => element == email)) {
+          /// Unliked
+          feedbackModel.liked!.removeWhere((element) => element == email);
+        } else {
+          /// Liked
+          feedbackModel.liked!.add(email ?? '');
+        }
+        /// cancel unliked
+        feedbackModel.unLiked!.removeWhere((element) => element == email);
+      }
+
+      /// if user unliked this post
+      else {
+        if (feedbackModel.unLiked!.any((element) => element == email)) {
+          /// cancel
+          feedbackModel.unLiked!.removeWhere((element) => element == email);
+        } else {
+          /// unliked
+          feedbackModel.unLiked!.add(email ?? '');
+        }
+        /// cancel liked
+        feedbackModel.liked!.removeWhere((element) => element == email);
+      }
+
+      /// Update to Database
+      Map<String, dynamic> data = feedbackModel.toJson();
+      feedback.doc(id).update(data);
     } catch (e) {
       rethrow;
     }
