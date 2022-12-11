@@ -3,6 +3,7 @@ import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
 import 'package:e_onboarding_app/features/my_goals/models/my_task_model.dart';
+import 'package:e_onboarding_app/features/my_goals/screens/my_goals_detail_screen.dart';
 import 'package:e_onboarding_app/utils/set_color/set_my_goals_color.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class MyGoalScreen extends StatefulWidget {
 
 class _MyGoalScreenState extends State<MyGoalScreen> {
   bool isSwitch = false;
+
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeVM>(
@@ -96,59 +98,73 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
 
                               /// if assignee's email == user's email
                               if (taskData.assigneeEmail == model.getEmail) {
-                                return SizedBox(
-                                  width: double.infinity,
-                                  child: Card(
-                                    elevation: 5,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(8.r),
-                                        side: const BorderSide(
-                                            color: AppColor.primaryColor)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            taskData.taskTitle ?? 'ບໍ່ມີ',
-                                          ),
-                                          Text(taskData.taskDetail ?? 'ບໍ່ມີ'),
-                                          Align(
-                                            alignment: Alignment.centerRight,
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                data.update('taskStatus',
-                                                    (value) {
-                                                  return value == 'Do the task'
-                                                      ? 'Completed'
-                                                      : 'Do the task';
-                                                });
-                                              },
-                                              child: Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    vertical: 8.h,
-                                                    horizontal: 20.w),
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    color: setMyGoalsColor(
-                                                        taskData.taskStatus ??
-                                                            'Do the task')),
-                                                child: Text(
-                                                  taskData.taskStatus ??
-                                                      'Do the task',
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.w700),
+                                return GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MyGoalsDetailScreen(
+                                                  title: taskData.taskTitle ?? "",
+                                                  detail: taskData.taskDetail ?? "",
+                                                )));
+                                  },
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    child: Card(
+                                      elevation: 5,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8.r),
+                                          side: const BorderSide(
+                                              color: AppColor.primaryColor)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              taskData.taskTitle ?? 'ບໍ່ມີ',
+                                            ),
+                                            Text(
+                                                taskData.taskDetail ?? 'ບໍ່ມີ'),
+                                            Align(
+                                              alignment: Alignment.centerRight,
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  data.update('taskStatus',
+                                                      (value) {
+                                                    return value ==
+                                                            'Do the task'
+                                                        ? 'Completed'
+                                                        : 'Do the task';
+                                                  });
+                                                },
+                                                child: Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical: 8.h,
+                                                      horizontal: 20.w),
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      color: setMyGoalsColor(
+                                                          taskData.taskStatus ??
+                                                              'Do the task')),
+                                                  child: Text(
+                                                    taskData.taskStatus ??
+                                                        'Do the task',
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w700),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          )
-                                        ],
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
