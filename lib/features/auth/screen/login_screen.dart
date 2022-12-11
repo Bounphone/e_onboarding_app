@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                                 controller: email,
                                 hide: false,
                                 validator: (email) {
-                                  if(email == null){
+                                  if(email.isEmpty){
                                     return 'Please enter your email';
                                   }
                                 }),
@@ -60,8 +60,8 @@ class LoginScreen extends StatelessWidget {
                               TextFieldWidget(
                                 controller: password, hide: true,
                                   validator: (password) {
-                                    if(password == null){
-                                      return 'Please enter your email';
+                                    if(password.isEmpty){
+                                      return 'Please enter your password';
                                     }
                                   }),
                               Align(
@@ -82,6 +82,9 @@ class LoginScreen extends StatelessWidget {
                       return ButtonWidgets(
                           title: 'Login',
                           onPress: () {
+                            if(_formKey.currentState!.validate()){
+                              return;
+                            }
                             model.signIn(email.text, password.text, context);
                           });
                     }),

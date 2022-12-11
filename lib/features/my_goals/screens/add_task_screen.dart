@@ -14,12 +14,13 @@ class AddTaskScreen extends StatefulWidget {
 }
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
+  final _formKey = GlobalKey<FormState>();
+
   final title = TextEditingController();
   final detail = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
 
     return Consumer<MyGoalsVM>(builder: (context, model, _) {
       return Scaffold(
@@ -35,7 +36,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               Expanded(
                   child: SingleChildScrollView(
                 child: Form(
-                  key: formKey,
+                  key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -46,8 +47,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       TextFieldWidget(
                         controller: title,
                         hide: false,
-                        validator: (title) {
-                          if(title == null){
+                        validator: (value) {
+                          if(value.isEmpty){
                             return 'Please enter some title';
                           }
                         },
@@ -61,8 +62,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       TextFieldWidget(
                         controller: detail,
                         hide: false,
-                        validator: (detail) {
-                          if(detail == null){
+                        validator: (value) {
+                          if(value.isEmpty){
                             return 'Please enter some detail';
                           }
                         },
@@ -74,6 +75,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ButtonWidgets(
                   title: 'Add to do today',
                   onPress: () {
+                    if(_formKey.currentState!.validate()){
+                        return;
+                    }
                     model.addNewTask(title.text, detail.text, context);
                   }),
               // ButtonWidgets(title: 'do it later', onPress: () {}),

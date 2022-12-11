@@ -6,7 +6,13 @@ class TextFieldWidget extends StatelessWidget {
   void Function(String)? onChanged;
   final FormFieldValidator validator;
 
-   TextFieldWidget({Key? key, required this.controller, required this.hide, this.onChanged, required this.validator}) : super(key: key);
+  TextFieldWidget(
+      {Key? key,
+      required this.controller,
+      required this.hide,
+      this.onChanged,
+      required this.validator})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +25,10 @@ class TextFieldWidget extends StatelessWidget {
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey)
-          ),
+              borderSide: BorderSide(color: Colors.grey)),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.grey)
-          ),
-
+              borderSide: BorderSide(color: Colors.grey)),
         ),
         onChanged: onChanged,
       ),

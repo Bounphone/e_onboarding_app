@@ -20,9 +20,11 @@ class DialogError extends StatelessWidget {
           ),
           Icon(Icons.warning_amber, color: Colors.red, size: (30.w + 30.h) / 2),
           SizedBox(height: 20.h),
-          Text(
-            message,
-            style: TextStyle(fontSize: 14.sp),
+          Center(
+            child: Text(
+              message,
+              style: TextStyle(fontSize: 14.sp),
+            ),
           ),
           SizedBox(height: 10.h),
         ],

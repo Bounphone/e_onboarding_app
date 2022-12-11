@@ -47,7 +47,7 @@ class _FeedbackCommentState extends State<FeedbackComment> {
                       TextFieldWidget(
                           controller: title, hide: false,
                         validator: (title) {
-                            if(title == null){
+                            if(title.isEmpty){
                              return 'Please enter some title';
                             }
                         },
@@ -57,8 +57,8 @@ class _FeedbackCommentState extends State<FeedbackComment> {
                       SizedBox(height: 5),
                       TextFieldWidget(controller: detail, hide: false,
                         validator: (detail) {
-                          if(detail == null){
-                            return 'Please enter some title';
+                          if(detail.isEmpty){
+                            return 'Please enter some detail';
                           }
                         },
                       ),
@@ -68,6 +68,9 @@ class _FeedbackCommentState extends State<FeedbackComment> {
               )),
               GestureDetector(
                 onTap: () {
+                  if(_formKey.currentState!.validate()){
+                    return;
+                  }
                   context
                       .read<FeedbackVM>()
                       .addNewFeedback(title.text, detail.text, context);

@@ -70,8 +70,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             TextFieldWidget(
                                 controller: firstname, hide: false,
                               validator: (firstname) {
-                                if(firstname == null){
-                                  return 'Please enter some title';
+                                if(firstname.isEmpty){
+                                  return 'Please enter your first name';
                                 }
                               },
                             ),
@@ -80,8 +80,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             SizedBox(height: 5.h),
                             TextFieldWidget(controller: lastname, hide: false,
                               validator: (lastname) {
-                                if(lastname == null){
-                                  return 'Please enter some title';
+                                if(lastname.isEmpty){
+                                  return 'Please enter your last name';
                                 }
                               },
                             ),
@@ -90,8 +90,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             SizedBox(height: 5.h),
                             TextFieldWidget(controller: birthdate, hide: false,
                               validator: (birthdate) {
-                                if(birthdate == null){
-                                  return 'Please enter some title';
+                                if(birthdate.isEmpty){
+                                  return 'Please enter your birthdate';
                                 }
                               },
                             ),
@@ -100,8 +100,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             SizedBox(height: 5.h),
                             TextFieldWidget(controller: email, hide: false,
                               validator: (email) {
-                                if(email == null){
-                                  return 'Please enter some title';
+                                if(email.isEmpty){
+                                  return 'Please enter your email';
                                 }
                               },
                             ),
@@ -113,8 +113,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             SizedBox(height: 5.h),
                             TextFieldWidget(controller: password, hide: true,
                               validator: (password) {
-                                if(password == null){
-                                  return 'Please enter some title';
+                                if(password.isEmpty){
+                                  return 'Please enter your password';
                                 }
                               },
                             ),
@@ -126,8 +126,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             SizedBox(height: 5.h),
                             TextFieldWidget(controller: confirmPw, hide: true,
                               validator: (confirmPw) {
-                                if(confirmPw == null){
-                                  return 'Please enter some title';
+                                if(confirmPw.isEmpty) {
+                                  return 'Please confirm password';
+                                }if(confirmPw != password.text){
+                                  return 'Password not match';
                                 }
                               },
                             ),
@@ -141,6 +143,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         return ButtonWidgets(
                             title: 'Next',
                             onPress: () async {
+                              if(_formKey.currentState!.validate()){
+                                return;
+                              }
                               model.onSignUp(
                                   email.text,
                                   password.text,
