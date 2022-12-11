@@ -3,9 +3,12 @@ import 'package:e_onboarding_app/config/app_colors.dart';
 import 'package:e_onboarding_app/config/firebase_collection.dart';
 import 'package:e_onboarding_app/features/home/home_vm/home_vm.dart';
 import 'package:e_onboarding_app/features/my_goals/models/my_task_model.dart';
+import 'package:e_onboarding_app/features/my_goals/my_goals_vm/my_goals_vm.dart';
 import 'package:e_onboarding_app/features/my_goals/screens/my_goals_detail_screen.dart';
+import 'package:e_onboarding_app/features/org/view_model/org_vm.dart';
 import 'package:e_onboarding_app/utils/set_color/set_my_goals_color.dart';
 import 'package:e_onboarding_app/widgets/button/button_widgets.dart';
+import 'package:e_onboarding_app/widgets/button/my_goal_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -92,12 +95,15 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                                 .map((DocumentSnapshot document) {
                               Map<String, dynamic> data =
                                   document.data()! as Map<String, dynamic>;
+                              String? orgName =
+                                  context.read<OrgVM>().getOrgName;
 
                               /// Parse data to model
                               MyTaskModel taskData = MyTaskModel.fromJson(data);
 
                               /// if assignee's email == user's email
-                              if (taskData.assigneeEmail == model.getEmail) {
+                              if (taskData.assigneeEmail == model.getEmail &&
+                                  taskData.organizationName == orgName) {
                                 return GestureDetector(
                                   onTap: () {
                                     Navigator.push(
@@ -105,9 +111,13 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 MyGoalsDetailScreen(
-                                                  title: taskData.taskTitle ?? "",
-                                                  detail: taskData.taskDetail ?? "",
+                                                  title:
+                                                      taskData.taskTitle ?? "",
+                                                  detail:
+                                                      taskData.taskDetail ?? "",
                                                   showButton: true,
+                                                  taskData: taskData,
+                                                  id: document.id,
                                                 )));
                                   },
                                   child: SizedBox(
@@ -127,43 +137,15 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                                           children: [
                                             Text(
                                               taskData.taskTitle ?? 'ບໍ່ມີ',
+                                              style: TextStyle(fontSize: 22.sp, color: AppColor.primaryColor, fontWeight: FontWeight.w700),
                                             ),
                                             Text(
                                                 taskData.taskDetail ?? 'ບໍ່ມີ'),
-                                            Align(
-                                              alignment: Alignment.centerRight,
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  data.update('taskStatus',
-                                                      (value) {
-                                                    return value ==
-                                                            'Do the task'
-                                                        ? 'Completed'
-                                                        : 'Do the task';
-                                                  });
-                                                },
-                                                child: Container(
-                                                  padding: EdgeInsets.symmetric(
-                                                      vertical: 8.h,
-                                                      horizontal: 20.w),
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      color: setMyGoalsColor(
-                                                          taskData.taskStatus ??
-                                                              'Do the task')),
-                                                  child: Text(
-                                                    taskData.taskStatus ??
-                                                        'Do the task',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
-                                                ),
-                                              ),
-                                            )
+                                            SizedBox(height: 10.h,),
+
+                                            MyGoalButton(
+                                                taskData: taskData,
+                                                id: document.id)
                                           ],
                                         ),
                                       ),

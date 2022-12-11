@@ -1,18 +1,25 @@
 import 'package:e_onboarding_app/config/app_colors.dart';
+import 'package:e_onboarding_app/features/my_goals/models/my_task_model.dart';
+import 'package:e_onboarding_app/widgets/button/my_goal_button.dart';
 import 'package:e_onboarding_app/widgets/icon/circle_avatar_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+
+import '../my_goals_vm/my_goals_vm.dart';
 
 class MyGoalsDetailScreen extends StatefulWidget {
   final String title;
   final String detail;
   bool showButton;
+  MyTaskModel? taskData;
+  String? id;
 
   MyGoalsDetailScreen(
       {Key? key,
       required this.title,
       required this.detail,
-      required this.showButton})
+      required this.showButton, this.taskData, this.id})
       : super(key: key);
 
   @override
@@ -49,24 +56,7 @@ class _MyGoalsDetailScreenState extends State<MyGoalsDetailScreen> {
               ),
             ),
             widget.showButton
-                ? GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                        width: double.infinity,
-                        padding: EdgeInsets.symmetric(
-                            vertical: 8.h, horizontal: 20.w),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: AppColor.primaryColor),
-                        child: const Center(
-                          child: Text(
-                            'Complete this task',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700),
-                          ),
-                        )),
-                  )
+                ? MyGoalButton(taskData: widget.taskData!, id: widget.id ?? '')
                 : Container(),
           ],
         ),
