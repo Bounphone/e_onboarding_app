@@ -74,17 +74,6 @@ class _MyGoalScreenState extends State<MyGoalScreen> {
                     if (isSwitch)
                       Column(
                         children: [
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //   children: [
-                          //     Text('Task progress',
-                          //         style: TextStyle(fontSize: 14.sp)),
-                          //     Text(
-                          //       '10%',
-                          //       style: TextStyle(fontSize: 14.sp),
-                          //     ),
-                          //   ],
-                          // ),
                           SizedBox(height: 5.h),
                           ButtonWidgets(
                               title: 'Add new task',

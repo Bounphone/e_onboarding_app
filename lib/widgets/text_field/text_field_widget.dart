@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class TextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final bool hide;
-  const TextFieldWidget({Key? key, required this.controller, required this.hide}) : super(key: key);
+  void Function(String)? onChanged;
+   TextFieldWidget({Key? key, required this.controller, required this.hide, this.onChanged}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,7 @@ class TextFieldWidget extends StatelessWidget {
           ),
 
         ),
+        onChanged: onChanged,
       ),
     );
   }

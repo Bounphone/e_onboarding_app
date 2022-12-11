@@ -7,4 +7,6 @@ class FirebaseCollection {
       FirebaseFirestore.instance.collection('MyBuddy');
   static CollectionReference myTask =
   FirebaseFirestore.instance.collection('MyTask');
+  static CollectionReference organizations =
+  FirebaseFirestore.instance.collection('Organizations');
 }

@@ -34,13 +34,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Add Task'),
+                    Text('Add Task',style: TextStyle(fontSize: 14.sp)),
                     SizedBox(height: 20.h),
-                    Text('Title'),
+                    Text('Title',style: TextStyle(fontSize: 14.sp)),
                     SizedBox(height: 5.h),
                     TextFieldWidget(controller: title, hide: false),
                     SizedBox(height: 20.h),
-                    Text('Detail'),
+                    Text('Detail',style: TextStyle(fontSize: 14.sp),),
                     SizedBox(height: 5.h),
                     TextFieldWidget(
                       controller: detail,
